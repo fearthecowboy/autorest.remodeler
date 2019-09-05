@@ -23,7 +23,9 @@ AutoRest needs the below config to pick this up as a plug-in - see https://githu
 
 ``` yaml 
 pipeline-model: v3
-
+remodeler-loaded: true
+```
+``` text
 pipeline:
   remodeler:
     input: openapi-document/multi-api/identity  
