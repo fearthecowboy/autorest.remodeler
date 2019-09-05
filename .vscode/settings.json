@@ -62,15 +62,7 @@
   "eslint.workingDirectories": [
     {
       "changeProcessCWD": true,
-      "directory": "./extensions/incubator",
-    },
-    {
-      "changeProcessCWD": true,
-      "directory": "./extensions/powershell",
-    },
-    {
-      "changeProcessCWD": true,
-      "directory": "./extensions/remodeler",
+      "directory": "./remodeler",
     }
   ]
 }

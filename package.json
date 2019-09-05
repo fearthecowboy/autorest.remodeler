@@ -1,11 +1,11 @@
 {
   "verison": "0.0.0",
   "private": true,
-  "name": "autorest.powershell",
+  "name": "autorest.remodeler",
   "description": "> See readme.md for build instructions",
   "scripts": {
-    "start": "node --max_old_space_size=4096 ./extensions/incubator/dist/autorest-extension",
-    "debug": "node --max_old_space_size=4096 --inspect-brk ./extensions/incubator/dist/autorest-extension",
+    "start": "node --max_old_space_size=4096 ./remodeler/dist/autorest-extension",
+    "debug": "node --max_old_space_size=4096 --inspect-brk ./remodeler/dist/autorest-extension",
     "prepare": "(pwsh -v || npm --silent run show-error) && pwsh -noprofile ./.scripts/verify-install.ps1",
     "show-error": "echo ====== &echo ====== & echo ====== & echo REQUIRED: Install PowerShell-core 6.1 or greater (see readme.md) & echo ====== & echo ====== & echo ====== & exit 1"
   }
