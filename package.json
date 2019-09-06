@@ -7,6 +7,7 @@
     "start": "node --max_old_space_size=4096 ./remodeler/dist/main",
     "debug": "node --max_old_space_size=4096 --inspect-brk ./remodeler/dist/main",
     "prepare": "(pwsh -v || npm --silent run show-error) && pwsh -noprofile ./.scripts/verify-install.ps1",
-    "show-error": "echo ====== &echo ====== & echo ====== & echo REQUIRED: Install PowerShell-core 6.1 or greater (see readme.md) & echo ====== & echo ====== & echo ====== & exit 1"
+    "show-error": "echo ====== &echo ====== & echo ====== & echo REQUIRED: Install PowerShell-core 6.1 or greater (see readme.md) & echo ====== & echo ====== & echo ====== & exit 1",
+    "pack": "rush publish --publish --pack --include-all --tag preview"
   }
 }
