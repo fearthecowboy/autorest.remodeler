@@ -491,10 +491,10 @@ export class Remodeler {
         // glob all the json responses and xml responses into categories.
         // todo: make consolodation configurable.
 
-        const [binary, serializable] = items(responseObject.content).linq.bifurcate(each => isBinaryStream(this.dereference(each.value.schema).instance));
+        const [binary, serializable] = items(responseObject.content).bifurcate(each => isBinaryStream(this.dereference(each.value.schema).instance));
 
-        const [jsons, more] = values(serializable).linq.bifurcate(each => isMediaTypeJson(each.key));
-        const [xmls, remaining] = values(more).linq.bifurcate(each => isMediaTypeXml(each.key));
+        const [jsons, more] = values(serializable).bifurcate(each => isMediaTypeJson(each.key));
+        const [xmls, remaining] = values(more).bifurcate(each => isMediaTypeXml(each.key));
 
         const rest = [...binary, ...remaining];
 
@@ -666,13 +666,13 @@ export class Remodeler {
   }
 
   copyRequestBody = (name: string, original: OpenAPI.RequestBody): RequestBody => {
-    let rq = items(original.content).linq.first();
+    let rq = items(original.content).first();
 
     if (length(original.content) > 1) {
 
       // check to see if there are multiple possible content types (that aren't really just variations of themselves)
-      const [jsons, more] = items(original.content).linq.bifurcate(each => isMediaTypeJson(each.key));
-      const [xmls, rest] = values(more).linq.bifurcate(each => isMediaTypeXml(each.key));
+      const [jsons, more] = items(original.content).bifurcate(each => isMediaTypeJson(each.key));
+      const [xmls, rest] = values(more).bifurcate(each => isMediaTypeXml(each.key));
 
       if (((jsons.length > 0 ? 1 : 0) + (xmls.length > 0 ? 1 : 0) + rest.length) > 1) {
         // there are mulitple possible request bodies here.
@@ -686,7 +686,7 @@ export class Remodeler {
         rq = jsons[0] || xmls[0] || rest[0];
 
         this.modelState.warning(
-          `The request body '${name}' has more than one possible content type specified (${keys(original.content).linq.toArray().join()}) - using '${rq.key}'`,
+          `The request body '${name}' has more than one possible content type specified (${keys(original.content).toArray().join()}) - using '${rq.key}'`,
           ['MultipleRequestTypesFound'],
           /* todo: find source location for this node */
         );

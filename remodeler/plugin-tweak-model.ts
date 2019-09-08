@@ -5,7 +5,7 @@
 
 import { KnownMediaType, knownMediaType, ParameterLocation, getPolymorphicBases, isSchemaObject, JsonType, Property, Schema, processCodeModel, StringFormat, codemodel, ModelState } from '@azure-tools/codemodel-v3';
 import { pascalCase, deconstruct, fixLeadingNumber } from '@azure-tools/codegen';
-import { items, keys, values, select, } from '@azure-tools/linq';
+import { items, keys, values } from '@azure-tools/linq';
 
 import { Channel, Host } from '@azure-tools/autorest-extension-base';
 import { OAuthFlows } from '@azure-tools/codemodel-v3/dist/code-model/security-scheme';
@@ -240,10 +240,10 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
     }
 
     // move well-known hearder parameters into details, and we can process them in the generator how we please.
-    // operation.details.default.headerparameters = values(operation.parameters).linq.where(p => p.in === ParameterLocation.Header && ['If-Match', 'If-None-Match'].includes(p.name)).linq.toArray();
+    // operation.details.default.headerparameters = values(operation.parameters).where(p => p.in === ParameterLocation.Header && ['If-Match', 'If-None-Match'].includes(p.name)).toArray();
 
     // remove if-match and if-none-match parameters from the operation itself.
-    // operation.parameters = values(operation.parameters).linq.where(p => !(p.in === ParameterLocation.Header && ['If-Match', 'If-None-Match'].includes(p.name))).linq.toArray();
+    // operation.parameters = values(operation.parameters).where(p => !(p.in === ParameterLocation.Header && ['If-Match', 'If-None-Match'].includes(p.name))).toArray();
 
   }
 

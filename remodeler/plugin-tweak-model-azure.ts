@@ -56,7 +56,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
 
             // does it have  a single member that is an array (ie, value :  [...])
             if (length(schema.properties) === 1 && schema.allOf.length === 0) {
-              const propertyName = keys(schema.properties).linq.first();
+              const propertyName = keys(schema.properties).first();
               if (propertyName) {
                 const property = schema.properties[propertyName];
                 if (property.schema.type === JsonType.Array) {
@@ -73,7 +73,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
             // does it kinda look like a x-ms-pagable (value/nextlink?)
             if (length(schema.properties) === 2 && schema.allOf.length === 0) {
               if (schema.properties.nextLink) {
-                const propertyName = keys(schema.properties).linq.where(each => each !== 'nextLink').linq.first();
+                const propertyName = keys(schema.properties).where(each => each !== 'nextLink').first();
                 if (propertyName) {
                   const property = schema.properties[propertyName];
                   if (property.schema.type === JsonType.Array) {
@@ -147,13 +147,13 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
 
     for (const schema of values(model.schemas)) {
       // find schemas that have an 'id' and are not readonly
-      if (values(getAllProperties(schema)).linq.any(prop => prop.serializedName === 'id' && !prop.details.default.readOnly)) {
+      if (values(getAllProperties(schema)).any(prop => prop.serializedName === 'id' && !prop.details.default.readOnly)) {
 
         // look thru the operations, and the PUT methods 
-        for (const op of values(model.http.operations).linq.where(o => o.method === HttpMethod.Put)) {
+        for (const op of values(model.http.operations).where(o => o.method === HttpMethod.Put)) {
 
           // see if any of the responses have the same schema as we are looking for 
-          if (values(op.responses).linq.any(rsps => values(rsps).linq.any(resp => !!resp.schema && resp.schema.details.default.uid === schema.details.default.uid))) {
+          if (values(op.responses).any(rsps => values(rsps).any(resp => !!resp.schema && resp.schema.details.default.uid === schema.details.default.uid))) {
 
             // tell it not to inline that 
             schema.details.default.byReference = true;

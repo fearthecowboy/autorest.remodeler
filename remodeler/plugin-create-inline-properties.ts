@@ -106,7 +106,7 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
     }
   }
 
-  const [objectProperties, nonObjectProperties] = values(schema.properties).linq.bifurcate(each =>
+  const [objectProperties, nonObjectProperties] = values(schema.properties).bifurcate(each =>
     each.schema.type === JsonType.Object &&       // is it an object 
     getAllProperties(each.schema).length > 0    // does it have properties (or inherit properties)
   );
@@ -133,7 +133,7 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
       inlined: [],
     };
 
-    const allNotRequired = values(getAllPublicVirtualProperties()).linq.all(each => !each.property.details.default.required);
+    const allNotRequired = values(getAllPublicVirtualProperties()).all(each => !each.property.details.default.required);
 
     const childCount = length(virtualChildProperties.owned) + length(virtualChildProperties.inherited) + length(virtualChildProperties.inlined);
     if (canInline && (property.details.default.required || allNotRequired) && (childCount < threshold || propertyName === 'properties')) {
