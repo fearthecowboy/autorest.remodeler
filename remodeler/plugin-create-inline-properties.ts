@@ -246,7 +246,7 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
   for (const each of virtualProperties.inlined.sort((a, b) => a.nameOptions.length - b.nameOptions.length)) {
     const ct = inlined.get(each.name);
     if (ct && ct > 1) {
-      console.error(`Fixing collision on name ${each.name} #${ct} `);
+      // console.error(`Fixing collision on name ${each.name} #${ct} `);
       each.name = selectName(each.nameOptions, usedNames);
     }
   }

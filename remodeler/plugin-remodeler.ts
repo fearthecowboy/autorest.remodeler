@@ -11,6 +11,8 @@ import { Remodeler } from './remodeler';
 type State = ModelState<OpenAPI.Model>;
 
 export async function processRequest(service: Host) {
+  const debug = await service.GetValue('debug') || false;
+
   try {
     const state = await new ModelState<OpenAPI.Model>(service).init();
     // process
@@ -22,7 +24,9 @@ export async function processRequest(service: Host) {
     // output the model to the pipeline
     service.WriteFile('code-model-v3.yaml', serialize(codeModel), undefined, 'code-model-v3');
   } catch (E) {
-    console.error(`${__filename} - FAILURE  ${JSON.stringify(E)} ${E.stack}`);
+    if (debug) {
+      console.error(`${__filename} - FAILURE  ${JSON.stringify(E)} ${E.stack}`);
+    }
     throw E;
   }
 }
