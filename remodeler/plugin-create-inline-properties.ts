@@ -95,7 +95,7 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
         originalContainingSchema: virtualProperty.originalContainingSchema,
         description: virtualProperty.description,
         alias: [],
-        required: virtualProperty.required,
+        required: virtualProperty.required || !!schema.required.find(each => each.toLowerCase() === virtualProperty.property.details.default.name.toLowerCase()),
         sharedWith: virtualProperty.sharedWith,
       };
       // add it to the list of virtual properties that share this property.
