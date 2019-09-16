@@ -247,17 +247,17 @@ export class Remodeler {
       newSchema.not = this.refOrAdd(`.${name}.not`, this.dereference(original.not), this.model.schemas, this.copySchema);
     }
     if (original.allOf) {
-      for (let index = 0; index < original.allOf.length; index++) {
+      for (let index = 0; index < length(original.allOf); index++) {
         newSchema.allOf.push(this.refOrAdd(`.${name}.allOf.${index}`, this.dereference(original.allOf[index]), this.model.schemas, this.copySchema));
       }
     }
     if (original.anyOf) {
-      for (let index = 0; index < original.anyOf.length; index++) {
+      for (let index = 0; index < length(original.anyOf); index++) {
         newSchema.allOf.push(this.refOrAdd(`.${name}.anyOf.${index}`, this.dereference(original.anyOf[index]), this.model.schemas, this.copySchema));
       }
     }
     if (original.oneOf) {
-      for (let index = 0; index < original.oneOf.length; index++) {
+      for (let index = 0; index < length(original.oneOf); index++) {
         newSchema.allOf.push(this.refOrAdd(`.${name}.oneOf.${index}`, this.dereference(original.oneOf[index]), this.model.schemas, this.copySchema));
       }
     }
@@ -498,7 +498,7 @@ export class Remodeler {
 
         const rest = [...binary, ...remaining];
 
-        if (jsons.length > 0) {
+        if (length(jsons) > 0) {
           const schema = jsons[0].value.schema;
           const mediaType = jsons[0].key;
 
@@ -510,7 +510,7 @@ export class Remodeler {
           }));
         }
 
-        if (xmls.length > 0) {
+        if (length(xmls) > 0) {
           const schema = xmls[0].value.schema;
           const mediaType = xmls[0].key;
 
@@ -522,7 +522,7 @@ export class Remodeler {
           }));
         }
 
-        if (rest.length > 0) {
+        if (length(rest) > 0) {
           for (const { key: mediaType, value: responseType } of rest) {
             const schema = responseType.schema;
             newOperation.responses[responseCode].push(new NewResponse(responseCode, responseObject.description, rest.map(v => v.key), {
@@ -674,7 +674,7 @@ export class Remodeler {
       const [jsons, more] = items(original.content).bifurcate(each => isMediaTypeJson(each.key));
       const [xmls, rest] = values(more).bifurcate(each => isMediaTypeXml(each.key));
 
-      if (((jsons.length > 0 ? 1 : 0) + (xmls.length > 0 ? 1 : 0) + rest.length) > 1) {
+      if (((length(jsons) > 0 ? 1 : 0) + (length(xmls) > 0 ? 1 : 0) + length(rest)) > 1) {
         // there are mulitple possible request bodies here.
         // autorest does not currently support generating code that can target different request content types
         // we're going to pick one based on an aribitrary priority:

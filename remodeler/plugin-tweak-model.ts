@@ -5,11 +5,9 @@
 
 import { KnownMediaType, knownMediaType, ParameterLocation, getPolymorphicBases, isSchemaObject, JsonType, Property, Schema, processCodeModel, StringFormat, codemodel, ModelState } from '@azure-tools/codemodel-v3';
 import { pascalCase, deconstruct, fixLeadingNumber } from '@azure-tools/codegen';
-import { items, keys, values } from '@azure-tools/linq';
+import { items, keys, values, length } from '@azure-tools/linq';
 
 import { Channel, Host } from '@azure-tools/autorest-extension-base';
-import { OAuthFlows } from '@azure-tools/codemodel-v3/dist/code-model/security-scheme';
-import { parentPort } from 'worker_threads';
 
 export const HeaderProperty = 'HeaderProperty';
 export enum HeaderPropertyType {
@@ -33,7 +31,7 @@ export function titleToAzureServiceName(title: string): string {
 
 function dropDuplicatePropertiesInChildSchemas(schema: Schema, state: State, map: Map<string, Property> = new Map()) {
   let success = true;
-  for (const parent of schema.allOf) {
+  for (const parent of values(schema.allOf)) {
     // handle parents first
     if (!dropDuplicatePropertiesInChildSchemas(parent, state, map)) {
       return false;
@@ -98,7 +96,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
   model.schemas['universal-parameter-type'] = universalId;
 
   for (const operation of values(model.http.operations)) {
-    for (const param of operation.parameters.filter(each => each.in === ParameterLocation.Path)) {
+    for (const param of values(operation.parameters).where(each => each.in === ParameterLocation.Path)) {
       const name = param.details.default.name;
       if (!universalId.properties[name]) {
         universalId.properties[name] = new Property(name, {
@@ -152,7 +150,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
   // schemas that have parents and implement properties that are in the parent schemas
   // will have the property dropped in the child schema
   for (const schema of values(model.schemas)) {
-    if (schema.allOf.length > 0) {
+    if (length(schema.allOf) > 0) {
       if (!dropDuplicatePropertiesInChildSchemas(schema, state)) {
         throw new Error('Schemas are in conflict.');
       }
@@ -256,7 +254,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
 
 
     const parents = getPolymorphicBases(schema);
-    if (parents.length > 0) {
+    if (length(parents) > 0) {
       // if our parent is polymorphic, then we must have a discriminator value
       schema.details.default.discriminatorValue = schema.extensions['x-ms-discriminator-value'] || schema.details.default.name;
 
@@ -272,7 +270,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
   // identify parameters that are constants
   for (const operation of values(model.http.operations)) {
     for (const parameter of values(operation.parameters)) {
-      if (parameter.required && parameter.schema.enum.length === 1) {
+      if (parameter.required && length(parameter.schema.enum) === 1) {
         // parameters with an enum single value are constants
         parameter.details.default.constantValue = parameter.schema.enum[0];
       }
@@ -283,7 +281,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
   // identify properties that are constants
   for (const schema of values(model.schemas)) {
     for (const property of values(schema.properties)) {
-      if (property.details.default.required && property.schema.enum.length === 1) {
+      if (property.details.default.required && length(property.schema.enum) === 1) {
         // properties with an enum single value are constants
         // add the constant value
         property.details.default.constantValue = property.schema.enum[0];

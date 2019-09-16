@@ -25,7 +25,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
   // identify the next link (null means just get the results as an array)
   // if nextLinkName is null, then it won't actually page, but we'd like to unroll the contents anyway.
   for (const operation of values(model.http.operations)) {
-    if (operation.extensions[xmsPageable]) {
+    if (operation.extensions && operation.extensions[xmsPageable]) {
       // it's marked pagable.
       operation.details.default.pageable = {
         responseType: 'pageable',
@@ -55,7 +55,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
           if (schema.type === JsonType.Object) {
 
             // does it have  a single member that is an array (ie, value :  [...])
-            if (length(schema.properties) === 1 && schema.allOf.length === 0) {
+            if (length(schema.properties) === 1 && length(schema.allOf) === 0) {
               const propertyName = keys(schema.properties).first();
               if (propertyName) {
                 const property = schema.properties[propertyName];
@@ -71,7 +71,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
             }
 
             // does it kinda look like a x-ms-pagable (value/nextlink?)
-            if (length(schema.properties) === 2 && schema.allOf.length === 0) {
+            if (length(schema.properties) === 2 && length(schema.allOf) === 0) {
               if (schema.properties.nextLink) {
                 const propertyName = keys(schema.properties).where(each => each !== 'nextLink').first();
                 if (propertyName) {
@@ -99,7 +99,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
 
   // make sure that all operations with lro have an options block.
   for (const operation of values(model.http.operations)) {
-    if (operation.extensions['x-ms-long-running-operation']) {
+    if (operation.extensions && operation.extensions['x-ms-long-running-operation']) {
       operation.details.default.asjob = true;
 
       operation.details.default.lro = operation.extensions['x-ms-long-running-operation-options'] || {
@@ -127,7 +127,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
 
         if (apiVersions) {
           // set the constant value to the first one
-          if (apiVersions.length === 1) {
+          if (length(apiVersions) === 1) {
             parameter.details.default.constantValue = apiVersions[0];
             continue;
           }

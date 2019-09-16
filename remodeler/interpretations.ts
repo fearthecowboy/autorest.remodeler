@@ -8,6 +8,7 @@ import { EnumDetails, ModelState, components } from '@azure-tools/codemodel-v3';
 import { clone, getExtensionProperties } from './common';
 import * as OpenAPI from '@azure-tools/openapi';
 import { getPascalIdentifier } from '@azure-tools/codegen';
+import { length } from '@azure-tools/linq';
 
 interface XMSEnum {
   modelAsString?: boolean;
@@ -128,9 +129,9 @@ export function getOperationId(method: string, path: string, original: OpenAPI.H
 
 
   // synthesize from tags.
-  if (original.tags && original.tags.length > 0) {
+  if (original.tags && length(original.tags) > 0) {
 
-    switch (original.tags.length) {
+    switch (length(original.tags)) {
       case 0:
         break;
       case 1:
@@ -154,13 +155,13 @@ export function copyServer(server: OpenAPI.Server): components.Server {
 }
 
 export function getServers(method?: Array<OpenAPI.Server>, path?: Array<OpenAPI.Server>, model?: Array<OpenAPI.Server>): Array<components.Server> {
-  if (method && method.length > 0) {
+  if (method && length(method) > 0) {
     return method.map(copyServer);
   }
-  if (path && path.length > 0) {
+  if (path && length(path) > 0) {
     return path.map(copyServer);
   }
-  if (model && model.length > 0) {
+  if (model && length(model) > 0) {
     return model.map(copyServer);
   }
   return [];

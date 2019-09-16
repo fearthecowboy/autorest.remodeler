@@ -27,8 +27,8 @@ function getNameOptions(typeName: string, components: Array<string>) {
   const result = new Set<string>();
 
   // add a variant for each incrementally inclusive parent naming scheme.
-  for (let i = 0; i < components.length; i++) {
-    const subset = pascalCase([...removeSequentialDuplicates(components.slice(-1 * i, components.length))]);
+  for (let i = 0; i < length(components); i++) {
+    const subset = pascalCase([...removeSequentialDuplicates(components.slice(-1 * i, length(components)))]);
     result.add(subset);
   }
 
@@ -95,7 +95,7 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
         originalContainingSchema: virtualProperty.originalContainingSchema,
         description: virtualProperty.description,
         alias: [],
-        required: virtualProperty.required || !!schema.required.find(each => each && each.toLowerCase && each.toLowerCase() === virtualProperty.property.details.default.name.toLowerCase()),
+        required: virtualProperty.required || !!values(schema.required).first(each => !!each && !!each.toLowerCase && each.toLowerCase() === virtualProperty.property.details.default.name.toLowerCase()),
         sharedWith: virtualProperty.sharedWith,
       };
       // add it to the list of virtual properties that share this property.
@@ -243,7 +243,7 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
   }
 
   const usedNames = new Set(inlined.keys());
-  for (const each of virtualProperties.inlined.sort((a, b) => a.nameOptions.length - b.nameOptions.length)) {
+  for (const each of virtualProperties.inlined.sort((a, b) => length(a.nameOptions) - length(b.nameOptions))) {
     const ct = inlined.get(each.name);
     if (ct && ct > 1) {
       // console.error(`Fixing collision on name ${each.name} #${ct} `);
