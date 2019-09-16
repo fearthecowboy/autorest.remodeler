@@ -31,9 +31,9 @@ export class Interpretations {
     }
 
     // synthesize from tags.
-    if (original.tags && original.tags.length > 0) {
+    if (original.tags && length(original.tags) > 0) {
 
-      switch (original.tags.length) {
+      switch (length(original.tags)) {
         case 0:
           break;
         case 1:

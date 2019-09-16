@@ -2,17 +2,12 @@ import { Model as oai3, Dereferenced, dereference, Refable, includeXDash, } from
 import * as OpenAPI from '@azure-tools/openapi';
 import { items, values, Dictionary, ToDictionary } from '@azure-tools/linq';
 import { HttpMethod, CodeModel, Operation, Http } from '@azure-tools/codemodel';
-import { shadow, enableSourceTracking } from '@azure-tools/codegen';
-import { ExternalDocumentation } from '@azure-tools/codemodel/dist/model/common/external-documentation';
 import { Host, Session } from '@azure-tools/autorest-extension-base';
 import { Interpretations } from './interpretations'
-
 
 export function getExtensionProperties(dictionary: Dictionary<any>): Dictionary<any> {
   return ToDictionary(includeXDash(dictionary), each => dictionary[each]);
 }
-
-
 
 export class ModelerFour {
   codeModel: CodeModel
@@ -20,10 +15,7 @@ export class ModelerFour {
   protected interpret: Interpretations;
 
   constructor(protected session: Session<oai3>) {
-
     this.input = session.model;// shadow(session.model, filename);
-
-
 
     const i = this.input.info;
 
