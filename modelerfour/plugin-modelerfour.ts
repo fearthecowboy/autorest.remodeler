@@ -9,7 +9,6 @@ import * as OpenAPI from '@azure-tools/openapi';
 import { ModelerFour } from './modelerfour';
 
 
-
 export async function processRequest(host: Host) {
   const debug = await host.GetValue('debug') || false;
 

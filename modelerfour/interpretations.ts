@@ -1,9 +1,33 @@
 import { Session } from '@azure-tools/autorest-extension-base';
 import * as OpenAPI from '@azure-tools/openapi';
-import { values, length, items } from '@azure-tools/linq';
-import { CodeModel, Http, HttpServer, ServerVariable, StringSchema, ChoiceSchema } from '@azure-tools/codemodel';
+import { values, length, items, ToDictionary, Dictionary } from '@azure-tools/linq';
+import { CodeModel, Http, HttpServer, ServerVariable, StringSchema, ChoiceSchema, XmlSerlializationFormat, ExternalDocumentation, ApiVersion, Deprecation } from '@azure-tools/codemodel';
 
 export class Interpretations {
+  getXmlSerialization(schema: OpenAPI.Schema): XmlSerlializationFormat | undefined {
+    throw new Error('Method not implemented.');
+  }
+  getExternalDocs(schema: OpenAPI.Schema): ExternalDocumentation | undefined {
+    throw new Error('Method not implemented.');
+  }
+  getExample(schema: OpenAPI.Schema): any {
+    throw new Error('Method not implemented.');
+  }
+  getApiVersions(schema: OpenAPI.Schema): ApiVersion[] | undefined {
+    if (schema['x-ms-metadata'] && schema['x-ms-metadata']['apiVersions']) {
+      return values(<Array<string>>schema['x-ms-metadata']['apiVersions']).select(each => ({
+        version: each.replace(/^-/, '').replace(/+$/, ''),
+        range: each.startsWith('-') ? <any>'-' : each.endsWith('+') ? '+' : undefined
+      })).toArray();
+    }
+    return undefined;
+  }
+  getDeprecation(schema: OpenAPI.Schema): Deprecation | undefined {
+    if (schema.deprecated) {
+      // todo
+    }
+    return undefined;
+  }
 
   constructor(private session: Session<OpenAPI.Model>, private codeModel: CodeModel) {
   }
@@ -103,6 +127,13 @@ export class Interpretations {
 
   getEnumSchemaForVarible(name: string, somethingWithEnum: { enum?: Array<string> }): ChoiceSchema {
     return new ChoiceSchema(name, this.getDescription("MISSING-SERVER-VARIABLE-ENUM-DESCRIPTION", somethingWithEnum))
+  }
+
+  getExtensionProperties(dictionary: Dictionary<any>): Dictionary<any> {
+    return ToDictionary(OpenAPI.includeXDash(dictionary), each => dictionary[each]);
+  }
+  static getExtensionProperties(dictionary: Dictionary<any>): Dictionary<any> {
+    return ToDictionary(OpenAPI.includeXDash(dictionary), each => dictionary[each]);
   }
 }
 
