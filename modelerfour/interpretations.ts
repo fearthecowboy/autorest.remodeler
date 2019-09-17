@@ -2,6 +2,7 @@ import { Session } from '@azure-tools/autorest-extension-base';
 import * as OpenAPI from '@azure-tools/openapi';
 import { values, length, items, ToDictionary, Dictionary } from '@azure-tools/linq';
 import { CodeModel, Http, HttpServer, ServerVariable, StringSchema, ChoiceSchema, XmlSerlializationFormat, ExternalDocumentation, ApiVersion, Deprecation } from '@azure-tools/codemodel';
+import { StringFormat } from '@azure-tools/openapi';
 
 export class Interpretations {
   getXmlSerialization(schema: OpenAPI.Schema): XmlSerlializationFormat | undefined {
@@ -47,6 +48,10 @@ export class Interpretations {
         group: '',
         member: opId
       }
+  }
+
+  isStreamSchema(schema: OpenAPI.Schema) {
+    return (schema.format === StringFormat.Binary || 'file');
   }
 
   getOperationId(httpMethod: string, path: string, original: OpenAPI.HttpOperation) {

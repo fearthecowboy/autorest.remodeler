@@ -1,12 +1,17 @@
 import { Model as oai3, Dereferenced, dereference, Refable, includeXDash, JsonType, IntegerFormat, StringFormat, NumberFormat } from '@azure-tools/openapi'
 import * as OpenAPI from '@azure-tools/openapi';
 import { items, values, Dictionary, ToDictionary, length } from '@azure-tools/linq';
-import { HttpMethod, CodeModel, Operation, Http, BooleanSchema, Schema, NumberSchema, ArraySchema, Parameter, ChoiceSchema, StringSchema, ObjectSchema, ByteArraySchema, CharSchema, DateSchema, DateTimeSchema, DurationSchema, UuidSchema, UriSchema, CredentialSchema, ODataQuerySchema, UnixTimeSchema, SchemaType, OrSchema, AndSchema, XorSchema, DictionarySchema } from '@azure-tools/codemodel';
+import { HttpMethod, CodeModel, Operation, Http, BooleanSchema, Schema, NumberSchema, ArraySchema, Parameter, ChoiceSchema, StringSchema, ObjectSchema, ByteArraySchema, CharSchema, DateSchema, DateTimeSchema, DurationSchema, UuidSchema, UriSchema, CredentialSchema, ODataQuerySchema, UnixTimeSchema, SchemaType, OrSchema, AndSchema, XorSchema, DictionarySchema, Request, ParameterLocation, SerializationStyle, ImplementationLocation, Property } from '@azure-tools/codemodel';
 import { Host, Session } from '@azure-tools/autorest-extension-base';
 import { Interpretations } from './interpretations'
 import { fail } from '@azure-tools/codegen';
+import { open } from 'fs';
+import { request } from 'http';
 
 
+function as<T>(item: any): item is T {
+  return true;
+}
 
 export class ModelerFour {
   codeModel: CodeModel
@@ -46,6 +51,15 @@ export class ModelerFour {
   private resolve<T>(item: Refable<T>): Dereferenced<T> {
     return dereference(this.input, item);
   }
+
+  private async use<T>(item: Refable<T> | undefined, action: (name: string | undefined, instance: T) => Promise<void>): Promise<void> {
+    const i = dereference(this.input, item);
+    if (i.instance) {
+      await action(i.name, i.instance)
+    }
+    throw ('Unresolved item.');
+  }
+
 
   resolveArray<T>(source?: Refable<T>[]) {
     return values(source).select(each => dereference(this.input, each).instance)
@@ -288,29 +302,98 @@ export class ModelerFour {
   async processDictionarySchema(name: string, schema: OpenAPI.Schema): Promise<DictionarySchema> {
     throw new Error('Method not implemented.');
   }
-  async processObjectSchema(name: string, schema: OpenAPI.Schema): Promise<ObjectSchema | DictionarySchema | OrSchema | XorSchema | AndSchema> {
-    if (schema.oneOf) {
-      // oneOf is a Xor compound type
-      throw new Error(`oneOf not supported`);
+  async processObjectSchema(name: string, aSchema: OpenAPI.Schema): Promise<ObjectSchema | DictionarySchema | OrSchema | XorSchema | AndSchema> {
+    const andTypes = values(aSchema.allOf).toArray();
+    const orTypes = values(aSchema.anyOf).toArray();
+    const xorTypes = values(aSchema.oneOf).toArray();
+    const dictionaryDef = aSchema.additionalProperties;
+
+    const schema = {
+      ...aSchema,
+      allOf: undefined,
+      anyOf: undefined,
+      oneOf: undefined,
+      additionalProperties: undefined,
+    };
+
+    // is this more than a straightforward object?
+    const isMoreThanObject = (andTypes.length + orTypes.length + xorTypes.length) > 0 || !!dictionaryDef;
+
+    // do we have properties at all?
+    const hasProperties = length(schema.properties) > 0;
+
+    if (!isMoreThanObject && !hasProperties) {
+      // it's an empty object? 
+      this.session.warning(`Schema '${name}' is an empty object without properties or modifiers.`, ['Modeler', 'EmptyObject'], aSchema);
     }
 
-    // allOf & anyOf are object compound types
-    // their items must be all object types.
+    if (hasProperties) {
+      // we have properties defined here, which means that this is a 
+      // object definition at the very least. 
+      const objectSchema = new ObjectSchema(name, this.interpret.getDescription('MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA', schema), {
+        extensions: this.interpret.getExtensionProperties(schema),
+        summary: schema.title,
+        defaultValue: schema.default,
+        deprecated: this.interpret.getDeprecation(schema),
+        apiVersions: this.interpret.getApiVersions(schema),
+        example: this.interpret.getExample(schema),
+        externalDocs: this.interpret.getExternalDocs(schema),
+        serialization: {
+          xml: this.interpret.getXmlSerialization(schema)
+        },
+        minProperties: schema.minProperties ? Number(schema.minProperties) : undefined,
+        maxProperties: schema.maxProperties ? Number(schema.maxProperties) : undefined,
+      });
+      for (const { key: propertyName, value: property } of this.resolveDictionary(schema.properties)) {
+        this.use(<OpenAPI.Refable<OpenAPI.Schema>>property, async (pSchemaName, pSchema) => {
+          const pType = await this.processSchema(pSchemaName || `typeFor${propertyName}`, pSchema);
+          const prop = objectSchema.addProperty(new Property(propertyName, this.interpret.getDescription('PROPERTY-DESCRIPTION-MISSING', property), pType, {
+            readOnly: property.readOnly,
+            nullable: property.nullable,
+            required: schema.required ? schema.required.indexOf(propertyName) > -1 : undefined,
+          }));
 
-    if (schema.additionalProperties) {
-      if (length(schema.properties) === 0) {
-        // this is an honest-to-goodness dictionary schema 
-        return this.processDictionarySchema(name, schema)
+
+        });
       }
+
+
+
+    }
+    if (dictionaryDef) {
+
+    }
+    new Request(',', '', {
+
+    })
+
+
+    if (length(aSchema.oneOf) > 0) {
+      // oneOf means that we should create an AndSchema with the type here and 
     }
 
-    if ( )
+    // handle simple scenarios: 
+    if (aSchema.additionalProperties && length(aSchema.properties) === 0 && length(aSchema.allOf) === 0 && length(aSchema.oneOf)) {
+      // this is an honest-to-goodness dictionary schema 
+      return this.processDictionarySchema(name, aSchema)
+    }
+
+    // it's got both properties and additional properties. 
+    // split the model into a dictionary and an object, and 
+    // create an AndSchema for that. 
+
+    // the AndSchema should end up being the one that gets the 
+    // name (so the objectSchema needs an 'internal' name)
+    // the And
 
 
-      if (schema.properties) {
-        // this has object properties
-        // it's an actual object
-      }
+    //    if ( )
+
+
+    if (aSchema.properties) {
+      // this has object properties
+      // it's an actual object
+    }
 
     throw new Error('Method not implemented.');
   }
@@ -485,6 +568,10 @@ export class ModelerFour {
     }) || fail(`Unable to process schema.`);
   }
 
+  processRequestBody(mediaType: string, request: OpenAPI.RequestBody) {
+
+  }
+
   processOperation(operation: OpenAPI.HttpOperation | undefined, httpMethod: string, path: string, pathItem: OpenAPI.PathItem) {
     return this.should(operation, async (operation) => {
       const { group, member } = this.interpret.getOperationId(httpMethod, path, operation);
@@ -492,27 +579,66 @@ export class ModelerFour {
       // const opGroup = this.codeModel.
       const opGroup = this.codeModel.getOperationGroup(group)
       const op = opGroup.addOperation(new Operation(member, this.interpret.getDescription('MISSING-OPERATION-DESCRIPTION', operation)));
-      op.protocol.http = <Http.OperationProtocol>{
+
+      const httpRequest = op.request.protocol.http = <Http.RequestProtocol>{
         method: httpMethod,
         path: this.interpret.getPath(pathItem, operation, path),
         servers: this.interpret.getServers(operation)
-      }
-
-      // get all the parameters for the operation
-      for await (const p of this.resolveArray(operation.parameters).select(async parameter => {
-        const schema = this.resolve(parameter.schema);
-        const parameterSchema = (schema.instance) ? await this.processSchema(schema.name || '', schema.instance) : <never>null;
-        const result = new Parameter(parameter.name, this.interpret.getDescription('MISSING-PARAMETER-DESCRIPTION', parameter), {
-          schema: <any>parameterSchema,
-
-        });
-
-        return result;
-      })) {
-        op.addParameter(p);
       };
 
+      // get all the parameters for the operation
+      await this.resolveArray(operation.parameters).select(async parameter => {
+        this.use(parameter.schema, async (name, schema) => {
+          op.request.addParameter(new Parameter(parameter.name, this.interpret.getDescription('MISSING-PARAMETER-DESCRIPTION', parameter), {
+            schema: await this.processSchema(name || '', schema),
+          }));
+        });
+      }).results();
 
+      // what to do about the body?
+      const requestBody = this.resolve(operation.requestBody);
+      if (requestBody.instance) {
+        const contents = items(requestBody.instance.content).toArray();
+
+        switch (contents.length) {
+          case 0:
+            // no body (ie, GET?)
+            // why?
+            break;
+
+          case 1:
+            // a single type request body 
+            const requestSchema = this.resolve(contents[0].value.schema);
+            if (!requestSchema.instance) {
+              throw new Error(`Missing schema on request.`);
+            }
+
+            // set the media type to the content type.
+            (httpRequest as Http.WithBodyRequestProtocol).mediaType = contents[0].key;
+
+            if (this.interpret.isStreamSchema(requestSchema.instance)) {
+              // the request body is a stream. 
+              (httpRequest as Http.StreamRequestProtocol).stream = true;
+            } else {
+              // it has a body parameter, and we're going to use a schema for it.
+              // add it as the last parameter 
+              op.request.addParameter(new Parameter('body', this.interpret.getDescription('', requestBody.instance), {
+                protocol: {
+                  http: <Http.ParameterProtocol>{
+                    in: ParameterLocation.Body,
+                    style: SerializationStyle.Json,
+                    implementation: ImplementationLocation.Client
+                  }
+                }
+              }))
+            }
+            break;
+
+          default:
+            // multipart request body.
+            throw new Error('multipart not implemented yet');
+        }
+      }
     });
   }
 
