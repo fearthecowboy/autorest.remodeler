@@ -1,25 +1,36 @@
 import { Session } from '@azure-tools/autorest-extension-base';
 import * as OpenAPI from '@azure-tools/openapi';
 import { values, length, items, ToDictionary, Dictionary } from '@azure-tools/linq';
-import { CodeModel, Http, HttpServer, ServerVariable, StringSchema, ChoiceSchema, XmlSerlializationFormat, ExternalDocumentation, ApiVersion, Deprecation } from '@azure-tools/codemodel';
+import { CodeModel, Http, HttpServer, ServerVariable, StringSchema, ChoiceSchema, XmlSerlializationFormat, ExternalDocumentation, ApiVersion, Deprecation, ChoiceValue } from '@azure-tools/codemodel';
 import { StringFormat } from '@azure-tools/openapi';
 
 export class Interpretations {
+  getEnumChoices(schema: OpenAPI.Schema): Array<ChoiceValue> {
+    return values(schema.enum).select(each => ({
+      $type: 'ChoiceValue',
+      value: each,
+      name: '-each',
+      description: 'description'
+    })).toArray()
+
+  }
   getXmlSerialization(schema: OpenAPI.Schema): XmlSerlializationFormat | undefined {
-    throw new Error('Method not implemented.');
+    return undefined;
   }
   getExternalDocs(schema: OpenAPI.Schema): ExternalDocumentation | undefined {
-    throw new Error('Method not implemented.');
+    return undefined;
   }
   getExample(schema: OpenAPI.Schema): any {
-    throw new Error('Method not implemented.');
+    return {};
   }
   getApiVersions(schema: OpenAPI.Schema): ApiVersion[] | undefined {
     if (schema['x-ms-metadata'] && schema['x-ms-metadata']['apiVersions']) {
-      return values(<Array<string>>schema['x-ms-metadata']['apiVersions']).select(each => ({
-        version: each.replace(/^-/, '').replace(/+$/, ''),
+      const v = values(<Array<string>>schema['x-ms-metadata']['apiVersions']).select(each => ({
+        $type: 'ApiVersion',
+        version: each.replace(/^-/, '').replace(/\+$/, ''),
         range: each.startsWith('-') ? <any>'-' : each.endsWith('+') ? '+' : undefined
       })).toArray();
+      return v;
     }
     return undefined;
   }
@@ -85,6 +96,10 @@ export class Interpretations {
     return defaultValue;
   }
 
+  getName(defaultValue: string, original: any): string {
+    return (original['x-ms-metadata'] && original['x-ms-metadata']['name']) ? original['x-ms-metadata']['name'] : defaultValue;
+  }
+
   /** gets the operation path from metadata, falls back to the OAI3 path key */
   getPath(pathItem: OpenAPI.PathItem, operation: OpenAPI.HttpOperation, path: string) {
     return this.xmsMeta(pathItem, 'path') || this.xmsMeta(operation, 'path') || path;
@@ -125,7 +140,9 @@ export class Interpretations {
         }).toArray();
       }
 
+      (<Http.ModelProtocol>this.codeModel.protocol.http).servers.push(s);
       return s;
+
     }).toArray()
   }
 
@@ -135,10 +152,12 @@ export class Interpretations {
   }
 
   getExtensionProperties(dictionary: Dictionary<any>): Dictionary<any> {
-    return ToDictionary(OpenAPI.includeXDash(dictionary), each => dictionary[each]);
+    return Interpretations.getExtensionProperties(dictionary);
   }
   static getExtensionProperties(dictionary: Dictionary<any>): Dictionary<any> {
-    return ToDictionary(OpenAPI.includeXDash(dictionary), each => dictionary[each]);
+    const result = ToDictionary(OpenAPI.includeXDash(dictionary), each => dictionary[each]);
+    result['x-ms-metadata'] = undefined;
+    return result;
   }
 }
 

@@ -6,7 +6,7 @@
 import { suite, test } from 'mocha-typescript';
 import * as assert from 'assert';
 import { ModelerFour } from '../modelerfour';
-import { readFile } from '@azure-tools/async-io';
+import { readFile, writeFile } from '@azure-tools/async-io';
 import { deserialize, serialize, fail } from '@azure-tools/codegen';
 import { startSession } from '@azure-tools/autorest-extension-base';
 import { values } from '@azure-tools/linq';
@@ -68,7 +68,7 @@ async function createTestSession<TInputModel>(config: any, inputs: Array<string>
 
 
   @test async 'simple model test'() {
-    const session = await createTestSession<Model>({}, ['input1.yaml'], ['output1.yaml'])
+    const session = await createTestSession<Model>({}, ['input2.yaml'], ['output1.yaml'])
 
     // process OAI model
     const modeler = new ModelerFour(session);
@@ -76,7 +76,8 @@ async function createTestSession<TInputModel>(config: any, inputs: Array<string>
     // go!
     const codeModel = await modeler.process();
 
-    console.log(serialize(codeModel))
+    // console.log(serialize(codeModel))
+    await (writeFile(`${__dirname}/../../output.yaml`, serialize(codeModel)));
   }
 
 }
