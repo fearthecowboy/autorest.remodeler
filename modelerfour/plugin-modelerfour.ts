@@ -7,6 +7,7 @@ import { deserialize, serialize } from '@azure-tools/codegen';
 import { Host, startSession } from '@azure-tools/autorest-extension-base';
 import * as OpenAPI from '@azure-tools/openapi';
 import { ModelerFour } from './modelerfour';
+import { codeModelSchema } from '@azure-tools/codemodel';
 
 
 export async function processRequest(host: Host) {
@@ -22,7 +23,7 @@ export async function processRequest(host: Host) {
     const codeModel = modeler.process();
 
     // output the model to the pipeline
-    host.WriteFile('code-model-v4.yaml', serialize(codeModel), undefined, 'code-model-v4');
+    host.WriteFile('code-model-v4.yaml', serialize(codeModel, codeModelSchema), undefined, 'code-model-v4');
 
   } catch (E) {
     if (debug) {

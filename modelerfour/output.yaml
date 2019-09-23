@@ -1,9 +1,7 @@
-$type: CodeModel
+!<!CodeModel> 
 schemas:
-  $type: Schemas
   primitives:
-    - &ref_69
-      $type: StringSchema
+    - !<!Metadata> &ref_69
       $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·patch·parameters·0·schema
       type: string
       description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -15,8 +13,7 @@ schemas:
           name: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·patch·parameters·0·schema
           description: MISSING-SCHEMA-DESCRIPTION-STRING
   objects:
-    - &ref_0
-      $type: ObjectSchema
+    - !<!Metadata> &ref_0
       $key: ARecord
       type: object
       description: An A record.
@@ -28,10 +25,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: ipv4Address
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: ARecord-ipv4Address
             type: string
             description: The IPv4 address of this A record.
@@ -58,8 +54,7 @@ schemas:
           name: ARecord
           description: An A record.
     - *ref_0
-    - &ref_1
-      $type: ObjectSchema
+    - !<!Metadata> &ref_1
       $key: AaaaRecord
       type: object
       description: An AAAA record.
@@ -71,10 +66,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: ipv6Address
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: AaaaRecord-ipv6Address
             type: string
             description: The IPv6 address of this AAAA record.
@@ -101,8 +95,7 @@ schemas:
           name: AaaaRecord
           description: An AAAA record.
     - *ref_1
-    - &ref_2
-      $type: ObjectSchema
+    - !<!Metadata> &ref_2
       $key: MxRecord
       type: object
       description: An MX record.
@@ -114,10 +107,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: preference
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForpreference
             type: integer
             description: The preference value for this MX record.
@@ -133,10 +125,9 @@ schemas:
               name: preference
               description: The preference value for this MX record.
               uid: 'property:141'
-        - $type: Property
+        - !<!Metadata> 
           $key: exchange
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: MxRecord-exchange
             type: string
             description: The domain name of the mail host for this MX record.
@@ -163,8 +154,7 @@ schemas:
           name: MxRecord
           description: An MX record.
     - *ref_2
-    - &ref_3
-      $type: ObjectSchema
+    - !<!Metadata> &ref_3
       $key: NsRecord
       type: object
       description: An NS record.
@@ -176,10 +166,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: nsdname
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: NsRecord-nsdname
             type: string
             description: The name server name for this NS record.
@@ -206,8 +195,7 @@ schemas:
           name: NsRecord
           description: An NS record.
     - *ref_3
-    - &ref_4
-      $type: ObjectSchema
+    - !<!Metadata> &ref_4
       $key: PtrRecord
       type: object
       description: A PTR record.
@@ -219,10 +207,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: ptrdname
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: PtrRecord-ptrdname
             type: string
             description: The PTR target domain name for this PTR record.
@@ -249,8 +236,7 @@ schemas:
           name: PtrRecord
           description: A PTR record.
     - *ref_4
-    - &ref_5
-      $type: ObjectSchema
+    - !<!Metadata> &ref_5
       $key: SrvRecord
       type: object
       description: An SRV record.
@@ -262,10 +248,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: priority
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForpriority
             type: integer
             description: The priority value for this SRV record.
@@ -281,10 +266,9 @@ schemas:
               name: priority
               description: The priority value for this SRV record.
               uid: 'property:145'
-        - $type: Property
+        - !<!Metadata> 
           $key: weight
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForweight
             type: integer
             description: The weight value for this SRV record.
@@ -300,10 +284,9 @@ schemas:
               name: weight
               description: The weight value for this SRV record.
               uid: 'property:146'
-        - $type: Property
+        - !<!Metadata> 
           $key: port
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForport
             type: integer
             description: The port value for this SRV record.
@@ -319,10 +302,9 @@ schemas:
               name: port
               description: The port value for this SRV record.
               uid: 'property:147'
-        - $type: Property
+        - !<!Metadata> 
           $key: target
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: SrvRecord-target
             type: string
             description: The target domain name for this SRV record.
@@ -349,8 +331,7 @@ schemas:
           name: SrvRecord
           description: An SRV record.
     - *ref_5
-    - &ref_6
-      $type: ObjectSchema
+    - !<!Metadata> &ref_6
       $key: TxtRecord
       type: object
       description: A TXT record.
@@ -362,10 +343,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: value
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: TxtRecord-value
             type: array
             description: The text value of this TXT record.
@@ -376,8 +356,7 @@ schemas:
                 version: '2016-04-01'
               - $type: ApiVersion
                 version: 2015-05-04-preview
-            elementType:
-              $type: StringSchema
+            elementType: !<!Metadata> 
               $key: TxtRecord-valueItem
               type: string
               description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -408,8 +387,7 @@ schemas:
           name: TxtRecord
           description: A TXT record.
     - *ref_6
-    - &ref_7
-      $type: ObjectSchema
+    - !<!Metadata> &ref_7
       $key: CnameRecord
       type: object
       description: A CNAME record.
@@ -421,10 +399,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: cname
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: CnameRecord-cname
             type: string
             description: The canonical name for this CNAME record.
@@ -451,8 +428,7 @@ schemas:
           name: CnameRecord
           description: A CNAME record.
     - *ref_7
-    - &ref_8
-      $type: ObjectSchema
+    - !<!Metadata> &ref_8
       $key: SoaRecord
       type: object
       description: An SOA record.
@@ -462,10 +438,9 @@ schemas:
         - $type: ApiVersion
           version: '2016-04-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: host
-          schema: &ref_49
-            $type: StringSchema
+          schema: !<!Metadata> &ref_49
             $key: SoaRecord-host
             type: string
             description: The domain name of the authoritative name server for this SOA record.
@@ -487,10 +462,9 @@ schemas:
               name: host
               description: The domain name of the authoritative name server for this SOA record.
               uid: 'property:151'
-        - $type: Property
+        - !<!Metadata> 
           $key: email
-          schema: &ref_50
-            $type: StringSchema
+          schema: !<!Metadata> &ref_50
             $key: SoaRecord-email
             type: string
             description: The email contact for this SOA record.
@@ -512,10 +486,9 @@ schemas:
               name: email
               description: The email contact for this SOA record.
               uid: 'property:152'
-        - $type: Property
+        - !<!Metadata> 
           $key: serialNumber
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForserialNumber
             type: integer
             description: The serial number for this SOA record.
@@ -531,10 +504,9 @@ schemas:
               name: serialNumber
               description: The serial number for this SOA record.
               uid: 'property:153'
-        - $type: Property
+        - !<!Metadata> 
           $key: refreshTime
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForrefreshTime
             type: integer
             description: The refresh value for this SOA record.
@@ -550,10 +522,9 @@ schemas:
               name: refreshTime
               description: The refresh value for this SOA record.
               uid: 'property:154'
-        - $type: Property
+        - !<!Metadata> 
           $key: retryTime
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForretryTime
             type: integer
             description: The retry time for this SOA record.
@@ -569,10 +540,9 @@ schemas:
               name: retryTime
               description: The retry time for this SOA record.
               uid: 'property:155'
-        - $type: Property
+        - !<!Metadata> 
           $key: expireTime
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForexpireTime
             type: integer
             description: The expire time for this SOA record.
@@ -588,10 +558,9 @@ schemas:
               name: expireTime
               description: The expire time for this SOA record.
               uid: 'property:156'
-        - $type: Property
+        - !<!Metadata> 
           $key: minimumTTL
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForminimumTTL
             type: integer
             description: The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
@@ -614,8 +583,7 @@ schemas:
           name: SoaRecord
           description: An SOA record.
     - *ref_8
-    - &ref_9
-      $type: ObjectSchema
+    - !<!Metadata> &ref_9
       $key: CaaRecord
       type: object
       description: A CAA record.
@@ -623,10 +591,9 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: flags
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForflags
             type: integer
             description: The flags for this CAA record as an integer between 0 and 255.
@@ -642,10 +609,9 @@ schemas:
               name: flags
               description: The flags for this CAA record as an integer between 0 and 255.
               uid: 'property:158'
-        - $type: Property
+        - !<!Metadata> 
           $key: tag
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: CaaRecord-tag
             type: string
             description: The tag for this CAA record.
@@ -663,10 +629,9 @@ schemas:
               name: tag
               description: The tag for this CAA record.
               uid: 'property:159'
-        - $type: Property
+        - !<!Metadata> 
           $key: value
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: CaaRecord-value
             type: string
             description: The value for this CAA record.
@@ -689,8 +654,7 @@ schemas:
           name: CaaRecord
           description: A CAA record.
     - *ref_9
-    - &ref_10
-      $type: ObjectSchema
+    - !<!Metadata> &ref_10
       $key: RecordSetProperties
       type: object
       description: Represents the properties of the records in the record set.
@@ -698,15 +662,13 @@ schemas:
         - $type: ApiVersion
           version: '2016-04-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: metadata
-          schema: &ref_54
-            $type: DictionarySchema
+          schema: !<!Metadata> &ref_54
             $key: RecordSetProperties-metadata
             type: dictionary
             description: The metadata attached to the record set.
-            elementType:
-              $type: StringSchema
+            elementType: !<!Metadata> 
               $key: components·schemas·recordsetproperties·properties·metadata·additionalproperties
               type: string
               description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -730,10 +692,9 @@ schemas:
               name: metadata
               description: The metadata attached to the record set.
               uid: 'property:161'
-        - $type: Property
+        - !<!Metadata> 
           $key: TTL
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForTTL
             type: integer
             description: The TTL (time-to-live) of the records in the record set.
@@ -749,10 +710,9 @@ schemas:
               name: TTL
               description: The TTL (time-to-live) of the records in the record set.
               uid: 'property:162'
-        - $type: Property
+        - !<!Metadata> 
           $key: ARecords
-          schema: &ref_52
-            $type: ArraySchema
+          schema: !<!Metadata> &ref_52
             $key: RecordSetProperties-ARecords
             type: array
             description: The list of A records in the record set.
@@ -775,10 +735,9 @@ schemas:
               name: ARecords
               description: The list of A records in the record set.
               uid: 'property:163'
-        - $type: Property
+        - !<!Metadata> 
           $key: AAAARecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-AAAARecords
             type: array
             description: The list of AAAA records in the record set.
@@ -801,10 +760,9 @@ schemas:
               name: AAAARecords
               description: The list of AAAA records in the record set.
               uid: 'property:164'
-        - $type: Property
+        - !<!Metadata> 
           $key: MXRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-MXRecords
             type: array
             description: The list of MX records in the record set.
@@ -827,10 +785,9 @@ schemas:
               name: MXRecords
               description: The list of MX records in the record set.
               uid: 'property:165'
-        - $type: Property
+        - !<!Metadata> 
           $key: NSRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-NSRecords
             type: array
             description: The list of NS records in the record set.
@@ -853,10 +810,9 @@ schemas:
               name: NSRecords
               description: The list of NS records in the record set.
               uid: 'property:166'
-        - $type: Property
+        - !<!Metadata> 
           $key: PTRRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-PTRRecords
             type: array
             description: The list of PTR records in the record set.
@@ -879,10 +835,9 @@ schemas:
               name: PTRRecords
               description: The list of PTR records in the record set.
               uid: 'property:167'
-        - $type: Property
+        - !<!Metadata> 
           $key: SRVRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-SRVRecords
             type: array
             description: The list of SRV records in the record set.
@@ -905,10 +860,9 @@ schemas:
               name: SRVRecords
               description: The list of SRV records in the record set.
               uid: 'property:168'
-        - $type: Property
+        - !<!Metadata> 
           $key: TXTRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-TXTRecords
             type: array
             description: The list of TXT records in the record set.
@@ -931,7 +885,7 @@ schemas:
               name: TXTRecords
               description: The list of TXT records in the record set.
               uid: 'property:169'
-        - $type: Property
+        - !<!Metadata> 
           $key: CNAMERecord
           schema: *ref_7
           description: A CNAME record.
@@ -941,7 +895,7 @@ schemas:
               name: CNAMERecord
               description: A CNAME record.
               uid: 'property:170'
-        - $type: Property
+        - !<!Metadata> 
           $key: SOARecord
           schema: *ref_8
           description: An SOA record.
@@ -956,8 +910,7 @@ schemas:
           name: RecordSetProperties
           description: Represents the properties of the records in the record set.
     - *ref_10
-    - &ref_12
-      $type: ObjectSchema
+    - !<!Metadata> &ref_12
       $key: RecordSetProperties
       type: object
       description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
@@ -965,10 +918,9 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: fqdn
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-fqdn
             type: string
             description: Fully qualified domain name of the record set.
@@ -987,10 +939,9 @@ schemas:
               name: fqdn
               description: Fully qualified domain name of the record set.
               uid: 'property:172'
-        - $type: Property
+        - !<!Metadata> 
           $key: provisioningState
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-provisioningState
             type: string
             description: provisioning State of the record set.
@@ -1009,10 +960,9 @@ schemas:
               name: provisioningState
               description: provisioning State of the record set.
               uid: 'property:173'
-        - $type: Property
+        - !<!Metadata> 
           $key: targetResource
-          schema: &ref_11
-            $type: ObjectSchema
+          schema: !<!Metadata> &ref_11
             $key: SubResource
             type: object
             description: A reference to a another resource
@@ -1022,10 +972,9 @@ schemas:
               - $type: ApiVersion
                 version: 2018-03-01-preview
             properties:
-              - $type: Property
+              - !<!Metadata> 
                 $key: id
-                schema:
-                  $type: StringSchema
+                schema: !<!Metadata> 
                   $key: SubResource-id
                   type: string
                   description: Resource Id.
@@ -1056,10 +1005,9 @@ schemas:
               name: targetResource
               description: A reference to a another resource
               uid: 'property:175'
-        - $type: Property
+        - !<!Metadata> 
           $key: caaRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-caaRecords
             type: array
             description: The list of CAA records in the record set.
@@ -1086,8 +1034,7 @@ schemas:
           description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
     - *ref_11
     - *ref_11
-    - &ref_13
-      $type: ObjectSchema
+    - !<!Metadata> &ref_13
       $key: RecordSet
       type: object
       description: Describes a DNS record set (a collection of DNS records with the same name and type).
@@ -1095,10 +1042,9 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: id
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSet-id
             type: string
             description: The ID of the record set.
@@ -1117,10 +1063,9 @@ schemas:
               name: id
               description: The ID of the record set.
               uid: 'property:177'
-        - $type: Property
+        - !<!Metadata> 
           $key: name
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSet-name
             type: string
             description: The name of the record set.
@@ -1139,10 +1084,9 @@ schemas:
               name: name
               description: The name of the record set.
               uid: 'property:178'
-        - $type: Property
+        - !<!Metadata> 
           $key: type
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSet-type
             type: string
             description: The type of the record set.
@@ -1161,10 +1105,9 @@ schemas:
               name: type
               description: The type of the record set.
               uid: 'property:179'
-        - $type: Property
+        - !<!Metadata> 
           $key: etag
-          schema: &ref_34
-            $type: StringSchema
+          schema: !<!Metadata> &ref_34
             $key: RecordSet-etag
             type: string
             description: The etag of the record set.
@@ -1186,10 +1129,9 @@ schemas:
               name: etag
               description: The etag of the record set.
               uid: 'property:180'
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
-          schema: &ref_58
-            $type: AndSchema
+          schema: !<!Metadata> &ref_58
             $key: RecordSetProperties
             type: and
             description: MISSING-SCHEMA-DESCRIPTION-ANDSCHEMA
@@ -1214,8 +1156,7 @@ schemas:
           name: RecordSet
           description: Describes a DNS record set (a collection of DNS records with the same name and type).
     - *ref_13
-    - &ref_14
-      $type: ObjectSchema
+    - !<!Metadata> &ref_14
       $key: RecordSetListResult
       type: object
       description: The response to a record set List operation.
@@ -1223,10 +1164,9 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: value
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetListResult-value
             type: array
             description: Information about the record sets in the response.
@@ -1245,10 +1185,9 @@ schemas:
               name: value
               description: Information about the record sets in the response.
               uid: 'property:182'
-        - $type: Property
+        - !<!Metadata> 
           $key: nextLink
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSetListResult-nextLink
             type: string
             description: The continuation token for the next page of results.
@@ -1272,8 +1211,7 @@ schemas:
           name: RecordSetListResult
           description: The response to a record set List operation.
     - *ref_14
-    - &ref_15
-      $type: ObjectSchema
+    - !<!Metadata> &ref_15
       $key: ZoneProperties
       type: object
       description: Represents the properties of the zone.
@@ -1281,10 +1219,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: maxNumberOfRecordSets
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeFormaxNumberOfRecordSets
             type: integer
             description: The maximum number of record sets that can be created in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
@@ -1301,10 +1238,9 @@ schemas:
               name: maxNumberOfRecordSets
               description: The maximum number of record sets that can be created in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
               uid: 'property:184'
-        - $type: Property
+        - !<!Metadata> 
           $key: numberOfRecordSets
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeFornumberOfRecordSets
             type: integer
             description: The current number of record sets in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
@@ -1326,8 +1262,7 @@ schemas:
           name: ZoneProperties
           description: Represents the properties of the zone.
     - *ref_15
-    - &ref_19
-      $type: ObjectSchema
+    - !<!Metadata> &ref_19
       $key: ZoneProperties
       type: object
       description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
@@ -1335,10 +1270,9 @@ schemas:
         - $type: ApiVersion
           version: '2016-04-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: nameServers
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: ZoneProperties-nameServers
             type: array
             description: The name servers for this DNS zone. This is a read-only property and any attempt to set this value will be ignored.
@@ -1353,8 +1287,7 @@ schemas:
                 version: '2017-09-01'
               - $type: ApiVersion
                 version: '2016-04-01'
-            elementType:
-              $type: StringSchema
+            elementType: !<!Metadata> 
               $key: ZoneProperties-nameServersItem
               type: string
               description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -1389,8 +1322,7 @@ schemas:
         default:
           name: ZoneProperties
           description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
-    - &ref_18
-      $type: ObjectSchema
+    - !<!Metadata> &ref_18
       $key: ZoneProperties
       type: object
       description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
@@ -1400,19 +1332,18 @@ schemas:
         - $type: ApiVersion
           version: 2018-03-01-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: zoneType
-          schema: &ref_16
-            $type: ChoiceSchema
+          schema: !<!Metadata> &ref_16
             $key: ZoneType
             choices:
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Public
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Private
             type: choice
             description: The type of this DNS zone (Public or Private).
@@ -1421,8 +1352,7 @@ schemas:
                 version: '2018-05-01'
               - $type: ApiVersion
                 version: 2018-03-01-preview
-            choiceType:
-              $type: StringSchema
+            choiceType: !<!Metadata> 
               $key: choice
               type: string
               description: choice
@@ -1446,10 +1376,9 @@ schemas:
               name: zoneType
               description: The type of this DNS zone (Public or Private).
               uid: 'property:187'
-        - $type: Property
+        - !<!Metadata> 
           $key: registrationVirtualNetworks
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: ZoneProperties-registrationVirtualNetworks
             type: array
             description: A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
@@ -1470,10 +1399,9 @@ schemas:
               name: registrationVirtualNetworks
               description: A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
               uid: 'property:188'
-        - $type: Property
+        - !<!Metadata> 
           $key: resolutionVirtualNetworks
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: ZoneProperties-resolutionVirtualNetworks
             type: array
             description: A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
@@ -1498,8 +1426,7 @@ schemas:
         default:
           name: ZoneProperties
           description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
-    - &ref_17
-      $type: ObjectSchema
+    - !<!Metadata> &ref_17
       $key: Resource
       type: object
       description: Common properties of an Azure Resource Manager resource
@@ -1507,10 +1434,9 @@ schemas:
         - $type: ApiVersion
           version: '1.0'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: id
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: Resource-id
             type: string
             description: Resource ID.
@@ -1532,10 +1458,9 @@ schemas:
               name: id
               description: Resource ID.
               uid: 'property:190'
-        - $type: Property
+        - !<!Metadata> 
           $key: name
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: Resource-name
             type: string
             description: Resource name.
@@ -1557,10 +1482,9 @@ schemas:
               name: name
               description: Resource name.
               uid: 'property:191'
-        - $type: Property
+        - !<!Metadata> 
           $key: type
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: Resource-type
             type: string
             description: Resource type.
@@ -1589,8 +1513,7 @@ schemas:
           name: Resource
           description: Common properties of an Azure Resource Manager resource
     - *ref_17
-    - &ref_22
-      $type: ObjectSchema
+    - !<!Metadata> &ref_22
       $key: Resource
       type: object
       description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
@@ -1598,10 +1521,9 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: location
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: Resource-location
             type: string
             description: Resource location.
@@ -1624,15 +1546,13 @@ schemas:
               name: location
               description: Resource location.
               uid: 'property:193'
-        - $type: Property
+        - !<!Metadata> 
           $key: tags
-          schema: &ref_55
-            $type: DictionarySchema
+          schema: !<!Metadata> &ref_55
             $key: Resource-tags
             type: dictionary
             description: Resource tags.
-            elementType:
-              $type: StringSchema
+            elementType: !<!Metadata> 
               $key: components·schemas·resource·properties·tags·additionalproperties
               type: string
               description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -1659,8 +1579,7 @@ schemas:
         default:
           name: Resource
           description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
-    - &ref_21
-      $type: ObjectSchema
+    - !<!Metadata> &ref_21
       $key: Zone
       type: object
       description: Describes a DNS zone.
@@ -1668,10 +1587,9 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: etag
-          schema: &ref_31
-            $type: StringSchema
+          schema: !<!Metadata> &ref_31
             $key: Zone-etag
             type: string
             description: The etag of the zone.
@@ -1699,23 +1617,20 @@ schemas:
               name: etag
               description: The etag of the zone.
               uid: 'property:195'
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
-          schema: &ref_32
-            $type: AndSchema
+          schema: !<!Metadata> &ref_32
             $key: ZoneProperties
             type: and
             description: MISSING-SCHEMA-DESCRIPTION-ANDSCHEMA
             allOf:
               - *ref_18
-              - &ref_33
-                $type: AndSchema
+              - !<!Metadata> &ref_33
                 $key: ZoneProperties
                 type: and
                 description: MISSING-SCHEMA-DESCRIPTION-ANDSCHEMA
                 allOf:
-                  - &ref_37
-                    $type: AndSchema
+                  - !<!Metadata> &ref_37
                     $key: ZoneProperties
                     type: and
                     description: MISSING-SCHEMA-DESCRIPTION-ANDSCHEMA
@@ -1745,8 +1660,7 @@ schemas:
         default:
           name: Zone
           description: Describes a DNS zone.
-    - &ref_20
-      $type: ObjectSchema
+    - !<!Metadata> &ref_20
       $key: ZoneUpdate
       type: object
       description: Describes a request to update a DNS zone.
@@ -1754,15 +1668,13 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: tags
-          schema: &ref_56
-            $type: DictionarySchema
+          schema: !<!Metadata> &ref_56
             $key: ZoneUpdate-tags
             type: dictionary
             description: Resource tags.
-            elementType:
-              $type: StringSchema
+            elementType: !<!Metadata> 
               $key: components·schemas·zoneupdate·properties·tags·additionalproperties
               type: string
               description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -1789,8 +1701,7 @@ schemas:
           name: ZoneUpdate
           description: Describes a request to update a DNS zone.
     - *ref_20
-    - &ref_23
-      $type: ObjectSchema
+    - !<!Metadata> &ref_23
       $key: ZoneListResult
       type: object
       description: The response to a Zone List or ListAll operation.
@@ -1798,25 +1709,22 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: value
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: ZoneListResult-value
             type: array
             description: Information about the DNS zones.
             apiVersions:
               - $type: ApiVersion
                 version: '2018-05-01'
-            elementType: &ref_60
-              $type: AndSchema
+            elementType: !<!Metadata> &ref_60
               $key: Zone
               type: and
               description: Describes a DNS zone.
               allOf:
                 - *ref_21
-                - &ref_59
-                  $type: AndSchema
+                - !<!Metadata> &ref_59
                   $key: Resource
                   type: and
                   description: MISSING-SCHEMA-DESCRIPTION-ANDSCHEMA
@@ -1842,10 +1750,9 @@ schemas:
               name: value
               description: Information about the DNS zones.
               uid: 'property:198'
-        - $type: Property
+        - !<!Metadata> 
           $key: nextLink
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: ZoneListResult-nextLink
             type: string
             description: The continuation token for the next page of results.
@@ -1869,8 +1776,7 @@ schemas:
           name: ZoneListResult
           description: The response to a Zone List or ListAll operation.
     - *ref_23
-    - &ref_25
-      $type: ObjectSchema
+    - !<!Metadata> &ref_25
       $key: DnsResourceReferenceRequest
       type: object
       description: Represents the properties of the Dns Resource Reference Request.
@@ -1878,10 +1784,9 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
-          schema: &ref_24
-            $type: ObjectSchema
+          schema: !<!Metadata> &ref_24
             $key: DnsResourceReferenceRequestProperties
             type: object
             description: Represents the properties of the Dns Resource Reference Request.
@@ -1889,10 +1794,9 @@ schemas:
               - $type: ApiVersion
                 version: '2018-05-01'
             properties:
-              - $type: Property
+              - !<!Metadata> 
                 $key: targetResources
-                schema:
-                  $type: ArraySchema
+                schema: !<!Metadata> 
                   $key: DnsResourceReferenceRequestProperties-targetResources
                   type: array
                   description: A list of references to azure resources for which referencing dns records need to be queried.
@@ -1929,8 +1833,7 @@ schemas:
     - *ref_24
     - *ref_24
     - *ref_25
-    - &ref_28
-      $type: ObjectSchema
+    - !<!Metadata> &ref_28
       $key: DnsResourceReferenceResult
       type: object
       description: Represents the properties of the Dns Resource Reference Result.
@@ -1938,10 +1841,9 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
-          schema: &ref_26
-            $type: ObjectSchema
+          schema: !<!Metadata> &ref_26
             $key: DnsResourceReferenceResultProperties
             type: object
             description: The result of dns resource reference request. Returns a list of dns resource references for each of the azure resource in the request.
@@ -1949,18 +1851,16 @@ schemas:
               - $type: ApiVersion
                 version: '2018-05-01'
             properties:
-              - $type: Property
+              - !<!Metadata> 
                 $key: dnsResourceReferences
-                schema:
-                  $type: ArraySchema
+                schema: !<!Metadata> 
                   $key: DnsResourceReferenceResultProperties-dnsResourceReferences
                   type: array
                   description: The result of dns resource reference request. A list of dns resource references for each of the azure resource in the request
                   apiVersions:
                     - $type: ApiVersion
                       version: '2018-05-01'
-                  elementType: &ref_27
-                    $type: ObjectSchema
+                  elementType: !<!Metadata> &ref_27
                     $key: DnsResourceReference
                     type: object
                     description: Represents a single Azure resource and its referencing DNS records.
@@ -1968,10 +1868,9 @@ schemas:
                       - $type: ApiVersion
                         version: '2018-05-01'
                     properties:
-                      - $type: Property
+                      - !<!Metadata> 
                         $key: dnsResources
-                        schema:
-                          $type: ArraySchema
+                        schema: !<!Metadata> 
                           $key: DnsResourceReference-dnsResources
                           type: array
                           description: 'A list of dns Records '
@@ -1990,7 +1889,7 @@ schemas:
                             name: dnsResources
                             description: 'A list of dns Records '
                             uid: 'property:202'
-                      - $type: Property
+                      - !<!Metadata> 
                         $key: targetResource
                         schema: *ref_11
                         description: A reference to a another resource
@@ -2035,8 +1934,7 @@ schemas:
     - *ref_27
     - *ref_26
     - *ref_28
-    - &ref_30
-      $type: ObjectSchema
+    - !<!Metadata> &ref_30
       $key: CloudError
       type: object
       description: An error message
@@ -2044,10 +1942,9 @@ schemas:
         - $type: ApiVersion
           version: '2018-05-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: error
-          schema: &ref_29
-            $type: ObjectSchema
+          schema: !<!Metadata> &ref_29
             $key: CloudErrorBody
             type: object
             description: The body of an error message
@@ -2055,10 +1952,9 @@ schemas:
               - $type: ApiVersion
                 version: '2018-05-01'
             properties:
-              - $type: Property
+              - !<!Metadata> 
                 $key: code
-                schema: &ref_44
-                  $type: StringSchema
+                schema: !<!Metadata> &ref_44
                   $key: CloudErrorBody-code
                   type: string
                   description: The error code
@@ -2078,10 +1974,9 @@ schemas:
                     name: code
                     description: The error code
                     uid: 'property:206'
-              - $type: Property
+              - !<!Metadata> 
                 $key: message
-                schema: &ref_45
-                  $type: StringSchema
+                schema: !<!Metadata> &ref_45
                   $key: CloudErrorBody-message
                   type: string
                   description: A description of what caused the error
@@ -2101,10 +1996,9 @@ schemas:
                     name: message
                     description: A description of what caused the error
                     uid: 'property:207'
-              - $type: Property
+              - !<!Metadata> 
                 $key: target
-                schema: &ref_46
-                  $type: StringSchema
+                schema: !<!Metadata> &ref_46
                   $key: CloudErrorBody-target
                   type: string
                   description: The target resource of the error message
@@ -2124,10 +2018,9 @@ schemas:
                     name: target
                     description: The target resource of the error message
                     uid: 'property:208'
-              - $type: Property
+              - !<!Metadata> 
                 $key: details
-                schema:
-                  $type: ArraySchema
+                schema: !<!Metadata> 
                   $key: CloudErrorBody-details
                   type: array
                   description: Extra error information
@@ -2168,8 +2061,7 @@ schemas:
     - *ref_29
     - *ref_29
     - *ref_30
-    - &ref_42
-      $type: ObjectSchema
+    - !<!Metadata> &ref_42
       $key: TrackedResource
       type: object
       description: The resource model definition for a ARM tracked top level resource
@@ -2177,15 +2069,13 @@ schemas:
         - $type: ApiVersion
           version: '1.0'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: tags
-          schema: &ref_57
-            $type: DictionarySchema
+          schema: !<!Metadata> &ref_57
             $key: TrackedResource-tags
             type: dictionary
             description: Resource tags.
-            elementType:
-              $type: StringSchema
+            elementType: !<!Metadata> 
               $key: components·schemas·trackedresource·properties·tags·additionalproperties
               type: string
               description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -2208,10 +2098,9 @@ schemas:
               name: tags
               description: Resource tags.
               uid: 'property:211'
-        - $type: Property
+        - !<!Metadata> 
           $key: location
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: TrackedResource-location
             type: string
             description: The geo-location where the resource lives
@@ -2238,8 +2127,7 @@ schemas:
         default:
           name: TrackedResource
           description: The resource model definition for a ARM tracked top level resource
-    - &ref_62
-      $type: ObjectSchema
+    - !<!Metadata> &ref_62
       $key: Zone
       type: object
       description: Describes a DNS zone.
@@ -2247,7 +2135,7 @@ schemas:
         - $type: ApiVersion
           version: 2018-03-01-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: etag
           schema: *ref_31
           description: The etag of the zone.
@@ -2257,7 +2145,7 @@ schemas:
               name: etag
               description: The etag of the zone.
               uid: 'property:213'
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
           schema: *ref_32
           description: PROPERTY-DESCRIPTION-MISSING
@@ -2271,8 +2159,7 @@ schemas:
         default:
           name: Zone
           description: Describes a DNS zone.
-    - &ref_63
-      $type: ObjectSchema
+    - !<!Metadata> &ref_63
       $key: Zone
       type: object
       description: Describes a DNS zone.
@@ -2282,7 +2169,7 @@ schemas:
         - $type: ApiVersion
           version: '2017-09-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: etag
           schema: *ref_31
           description: The etag of the zone.
@@ -2292,7 +2179,7 @@ schemas:
               name: etag
               description: The etag of the zone.
               uid: 'property:215'
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
           schema: *ref_33
           description: PROPERTY-DESCRIPTION-MISSING
@@ -2306,8 +2193,7 @@ schemas:
         default:
           name: Zone
           description: Describes a DNS zone.
-    - &ref_35
-      $type: ObjectSchema
+    - !<!Metadata> &ref_35
       $key: RecordSet
       type: object
       description: Describes a DNS record set (a collection of DNS records with the same name and type).
@@ -2315,10 +2201,9 @@ schemas:
         - $type: ApiVersion
           version: '2016-04-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: id
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSet-id
             type: string
             description: The ID of the record set.
@@ -2336,10 +2221,9 @@ schemas:
               name: id
               description: The ID of the record set.
               uid: 'property:217'
-        - $type: Property
+        - !<!Metadata> 
           $key: name
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSet-name
             type: string
             description: The name of the record set.
@@ -2357,10 +2241,9 @@ schemas:
               name: name
               description: The name of the record set.
               uid: 'property:218'
-        - $type: Property
+        - !<!Metadata> 
           $key: type
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSet-type
             type: string
             description: The type of the record set.
@@ -2378,7 +2261,7 @@ schemas:
               name: type
               description: The type of the record set.
               uid: 'property:219'
-        - $type: Property
+        - !<!Metadata> 
           $key: etag
           schema: *ref_34
           description: The etag of the record set.
@@ -2388,7 +2271,7 @@ schemas:
               name: etag
               description: The etag of the record set.
               uid: 'property:220'
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
           schema: *ref_10
           description: Represents the properties of the records in the record set.
@@ -2403,8 +2286,7 @@ schemas:
           name: RecordSet
           description: Describes a DNS record set (a collection of DNS records with the same name and type).
     - *ref_35
-    - &ref_36
-      $type: ObjectSchema
+    - !<!Metadata> &ref_36
       $key: RecordSetListResult
       type: object
       description: The response to a record set List operation.
@@ -2412,10 +2294,9 @@ schemas:
         - $type: ApiVersion
           version: '2016-04-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: value
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetListResult-value
             type: array
             description: Information about the record sets in the response.
@@ -2434,10 +2315,9 @@ schemas:
               name: value
               description: Information about the record sets in the response.
               uid: 'property:222'
-        - $type: Property
+        - !<!Metadata> 
           $key: nextLink
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: RecordSetListResult-nextLink
             type: string
             description: The continuation token for the next page of results.
@@ -2460,8 +2340,7 @@ schemas:
           name: RecordSetListResult
           description: The response to a record set List operation.
     - *ref_36
-    - &ref_41
-      $type: ObjectSchema
+    - !<!Metadata> &ref_41
       $key: Zone
       type: object
       description: Describes a DNS zone.
@@ -2469,7 +2348,7 @@ schemas:
         - $type: ApiVersion
           version: '2016-04-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: etag
           schema: *ref_31
           description: The etag of the zone.
@@ -2479,7 +2358,7 @@ schemas:
               name: etag
               description: The etag of the zone.
               uid: 'property:224'
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
           schema: *ref_37
           description: PROPERTY-DESCRIPTION-MISSING
@@ -2493,8 +2372,7 @@ schemas:
         default:
           name: Zone
           description: Describes a DNS zone.
-    - &ref_40
-      $type: ObjectSchema
+    - !<!Metadata> &ref_40
       $key: ZoneDeleteResult
       type: object
       description: The response to a Zone Delete operation.
@@ -2502,10 +2380,9 @@ schemas:
         - $type: ApiVersion
           version: '2016-04-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: azureAsyncOperation
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: ZoneDeleteResult-azureAsyncOperation
             type: string
             description: Users can perform a Get on Azure-AsyncOperation to get the status of their delete Zone operations.
@@ -2523,31 +2400,29 @@ schemas:
               name: azureAsyncOperation
               description: Users can perform a Get on Azure-AsyncOperation to get the status of their delete Zone operations.
               uid: 'property:226'
-        - $type: Property
+        - !<!Metadata> 
           $key: status
-          schema: &ref_38
-            $type: ChoiceSchema
+          schema: !<!Metadata> &ref_38
             $key: OperationStatus
             choices:
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: InProgress
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Succeeded
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Failed
             type: choice
             description: MISSING-SCHEMA-DESCRIPTION-CHOICE
             apiVersions:
               - $type: ApiVersion
                 version: '2016-04-01'
-            choiceType:
-              $type: StringSchema
+            choiceType: !<!Metadata> 
               $key: choice
               type: string
               description: choice
@@ -2570,207 +2445,205 @@ schemas:
               name: status
               description: PROPERTY-DESCRIPTION-MISSING
               uid: 'property:227'
-        - $type: Property
+        - !<!Metadata> 
           $key: statusCode
-          schema: &ref_39
-            $type: ChoiceSchema
+          schema: !<!Metadata> &ref_39
             $key: HttpStatusCode
             choices:
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Continue
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: SwitchingProtocols
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: OK
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Created
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Accepted
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: NonAuthoritativeInformation
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: NoContent
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: ResetContent
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: PartialContent
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: MultipleChoices
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Ambiguous
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: MovedPermanently
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Moved
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Found
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Redirect
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: SeeOther
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: RedirectMethod
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: NotModified
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: UseProxy
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Unused
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: TemporaryRedirect
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: RedirectKeepVerb
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: BadRequest
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Unauthorized
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: PaymentRequired
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Forbidden
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: NotFound
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: MethodNotAllowed
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: NotAcceptable
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: ProxyAuthenticationRequired
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: RequestTimeout
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Conflict
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: Gone
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: LengthRequired
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: PreconditionFailed
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: RequestEntityTooLarge
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: RequestUriTooLong
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: UnsupportedMediaType
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: RequestedRangeNotSatisfiable
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: ExpectationFailed
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: UpgradeRequired
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: InternalServerError
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: NotImplemented
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: BadGateway
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: ServiceUnavailable
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: GatewayTimeout
-              - $type: ChoiceValue
-                name: '-each'
+              - name: '-each'
                 description: description
+                $type: ChoiceValue
                 value: HttpVersionNotSupported
             type: choice
             description: MISSING-SCHEMA-DESCRIPTION-CHOICE
             apiVersions:
               - $type: ApiVersion
                 version: '2016-04-01'
-            choiceType:
-              $type: StringSchema
+            choiceType: !<!Metadata> 
               $key: choice
               type: string
               description: choice
@@ -2793,10 +2666,9 @@ schemas:
               name: statusCode
               description: PROPERTY-DESCRIPTION-MISSING
               uid: 'property:228'
-        - $type: Property
+        - !<!Metadata> 
           $key: requestId
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: ZoneDeleteResult-requestId
             type: string
             description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -2819,8 +2691,7 @@ schemas:
           name: ZoneDeleteResult
           description: The response to a Zone Delete operation.
     - *ref_40
-    - &ref_43
-      $type: ObjectSchema
+    - !<!Metadata> &ref_43
       $key: ZoneListResult
       type: object
       description: The response to a Zone List or ListAll operation.
@@ -2828,25 +2699,22 @@ schemas:
         - $type: ApiVersion
           version: '2016-04-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: value
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: ZoneListResult-value
             type: array
             description: Information about the DNS zones.
             apiVersions:
               - $type: ApiVersion
                 version: '2016-04-01'
-            elementType: &ref_64
-              $type: AndSchema
+            elementType: !<!Metadata> &ref_64
               $key: Zone
               type: and
               description: Describes a DNS zone.
               allOf:
                 - *ref_41
-                - &ref_61
-                  $type: AndSchema
+                - !<!Metadata> &ref_61
                   $key: TrackedResource
                   type: and
                   description: The resource model definition for a ARM tracked top level resource
@@ -2872,10 +2740,9 @@ schemas:
               name: value
               description: Information about the DNS zones.
               uid: 'property:230'
-        - $type: Property
+        - !<!Metadata> 
           $key: nextLink
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: ZoneListResult-nextLink
             type: string
             description: The continuation token for the next page of results.
@@ -2898,8 +2765,7 @@ schemas:
           name: ZoneListResult
           description: The response to a Zone List or ListAll operation.
     - *ref_43
-    - &ref_48
-      $type: ObjectSchema
+    - !<!Metadata> &ref_48
       $key: CloudError
       type: object
       description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
@@ -2907,10 +2773,9 @@ schemas:
         - $type: ApiVersion
           version: '2016-04-01'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: error
-          schema: &ref_47
-            $type: ObjectSchema
+          schema: !<!Metadata> &ref_47
             $key: CloudErrorBody
             type: object
             description: MISSING-SCHEMA-DESCRIPTION-OBJECTSCHEMA
@@ -2918,7 +2783,7 @@ schemas:
               - $type: ApiVersion
                 version: '2016-04-01'
             properties:
-              - $type: Property
+              - !<!Metadata> 
                 $key: code
                 schema: *ref_44
                 description: The error code
@@ -2928,7 +2793,7 @@ schemas:
                     name: code
                     description: The error code
                     uid: 'property:232'
-              - $type: Property
+              - !<!Metadata> 
                 $key: message
                 schema: *ref_45
                 description: A description of what caused the error
@@ -2938,7 +2803,7 @@ schemas:
                     name: message
                     description: A description of what caused the error
                     uid: 'property:233'
-              - $type: Property
+              - !<!Metadata> 
                 $key: target
                 schema: *ref_46
                 description: The target resource of the error message
@@ -2948,10 +2813,9 @@ schemas:
                     name: target
                     description: The target resource of the error message
                     uid: 'property:234'
-              - $type: Property
+              - !<!Metadata> 
                 $key: details
-                schema:
-                  $type: ArraySchema
+                schema: !<!Metadata> 
                   $key: CloudErrorBody-details
                   type: array
                   description: MISSING-SCHEMA-DESCRIPTION-ARRAYSCHEMA
@@ -2992,8 +2856,7 @@ schemas:
     - *ref_47
     - *ref_47
     - *ref_48
-    - &ref_51
-      $type: ObjectSchema
+    - !<!Metadata> &ref_51
       $key: SoaRecord
       type: object
       description: An SOA record.
@@ -3001,7 +2864,7 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: host
           schema: *ref_49
           description: The domain name of the authoritative name server for this SOA record.
@@ -3011,7 +2874,7 @@ schemas:
               name: host
               description: The domain name of the authoritative name server for this SOA record.
               uid: 'property:237'
-        - $type: Property
+        - !<!Metadata> 
           $key: email
           schema: *ref_50
           description: The email contact for this SOA record.
@@ -3021,10 +2884,9 @@ schemas:
               name: email
               description: The email contact for this SOA record.
               uid: 'property:238'
-        - $type: Property
+        - !<!Metadata> 
           $key: serialNumber
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForserialNumber
             type: integer
             description: Gets or sets the serial number for this record.
@@ -3040,10 +2902,9 @@ schemas:
               name: serialNumber
               description: Gets or sets the serial number for this record.
               uid: 'property:239'
-        - $type: Property
+        - !<!Metadata> 
           $key: refreshTime
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForrefreshTime
             type: integer
             description: Gets or sets the refresh value for this record.
@@ -3059,10 +2920,9 @@ schemas:
               name: refreshTime
               description: Gets or sets the refresh value for this record.
               uid: 'property:240'
-        - $type: Property
+        - !<!Metadata> 
           $key: retryTime
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForretryTime
             type: integer
             description: Gets or sets the retry time for this record.
@@ -3078,10 +2938,9 @@ schemas:
               name: retryTime
               description: Gets or sets the retry time for this record.
               uid: 'property:241'
-        - $type: Property
+        - !<!Metadata> 
           $key: expireTime
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForexpireTime
             type: integer
             description: Gets or sets the expire time for this record.
@@ -3097,10 +2956,9 @@ schemas:
               name: expireTime
               description: Gets or sets the expire time for this record.
               uid: 'property:242'
-        - $type: Property
+        - !<!Metadata> 
           $key: minimumTTL
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForminimumTTL
             type: integer
             description: Gets or sets the minimum TTL value for this record.
@@ -3121,8 +2979,7 @@ schemas:
           name: SoaRecord
           description: An SOA record.
     - *ref_51
-    - &ref_53
-      $type: ObjectSchema
+    - !<!Metadata> &ref_53
       $key: RecordSetProperties
       type: object
       description: Represents the properties of the records in the RecordSet.
@@ -3130,10 +2987,9 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: TTL
-          schema:
-            $type: NumberSchema
+          schema: !<!Metadata> 
             $key: typeForTTL
             type: integer
             description: Gets or sets the TTL of the records in the RecordSet.
@@ -3149,7 +3005,7 @@ schemas:
               name: TTL
               description: Gets or sets the TTL of the records in the RecordSet.
               uid: 'property:244'
-        - $type: Property
+        - !<!Metadata> 
           $key: ARecords
           schema: *ref_52
           description: The list of A records in the record set.
@@ -3159,10 +3015,9 @@ schemas:
               name: ARecords
               description: The list of A records in the record set.
               uid: 'property:245'
-        - $type: Property
+        - !<!Metadata> 
           $key: AAAARecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-AAAARecords
             type: array
             description: Gets or sets the list of AAAA records in the RecordSet.
@@ -3181,10 +3036,9 @@ schemas:
               name: AAAARecords
               description: Gets or sets the list of AAAA records in the RecordSet.
               uid: 'property:246'
-        - $type: Property
+        - !<!Metadata> 
           $key: MXRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-MXRecords
             type: array
             description: Gets or sets the list of MX records in the RecordSet.
@@ -3203,10 +3057,9 @@ schemas:
               name: MXRecords
               description: Gets or sets the list of MX records in the RecordSet.
               uid: 'property:247'
-        - $type: Property
+        - !<!Metadata> 
           $key: NSRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-NSRecords
             type: array
             description: Gets or sets the list of NS records in the RecordSet.
@@ -3225,10 +3078,9 @@ schemas:
               name: NSRecords
               description: Gets or sets the list of NS records in the RecordSet.
               uid: 'property:248'
-        - $type: Property
+        - !<!Metadata> 
           $key: PTRRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-PTRRecords
             type: array
             description: Gets or sets the list of PTR records in the RecordSet.
@@ -3247,10 +3099,9 @@ schemas:
               name: PTRRecords
               description: Gets or sets the list of PTR records in the RecordSet.
               uid: 'property:249'
-        - $type: Property
+        - !<!Metadata> 
           $key: SRVRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-SRVRecords
             type: array
             description: Gets or sets the list of SRV records in the RecordSet.
@@ -3269,10 +3120,9 @@ schemas:
               name: SRVRecords
               description: Gets or sets the list of SRV records in the RecordSet.
               uid: 'property:250'
-        - $type: Property
+        - !<!Metadata> 
           $key: TXTRecords
-          schema:
-            $type: ArraySchema
+          schema: !<!Metadata> 
             $key: RecordSetProperties-TXTRecords
             type: array
             description: Gets or sets the list of TXT records in the RecordSet.
@@ -3291,7 +3141,7 @@ schemas:
               name: TXTRecords
               description: Gets or sets the list of TXT records in the RecordSet.
               uid: 'property:251'
-        - $type: Property
+        - !<!Metadata> 
           $key: CNAMERecord
           schema: *ref_7
           description: A CNAME record.
@@ -3301,7 +3151,7 @@ schemas:
               name: CNAMERecord
               description: A CNAME record.
               uid: 'property:252'
-        - $type: Property
+        - !<!Metadata> 
           $key: SOARecord
           schema: *ref_51
           description: An SOA record.
@@ -3316,8 +3166,7 @@ schemas:
           name: RecordSetProperties
           description: Represents the properties of the records in the RecordSet.
     - *ref_53
-    - &ref_65
-      $type: ObjectSchema
+    - !<!Metadata> &ref_65
       $key: RecordSet
       type: object
       description: Describes a DNS RecordSet (a set of DNS records with the same name and type).
@@ -3325,7 +3174,7 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: etag
           schema: *ref_34
           description: The etag of the record set.
@@ -3335,7 +3184,7 @@ schemas:
               name: etag
               description: The etag of the record set.
               uid: 'property:254'
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
           schema: *ref_53
           description: Represents the properties of the records in the RecordSet.
@@ -3349,8 +3198,7 @@ schemas:
         default:
           name: RecordSet
           description: Describes a DNS RecordSet (a set of DNS records with the same name and type).
-    - &ref_66
-      $type: ObjectSchema
+    - !<!Metadata> &ref_66
       $key: Zone
       type: object
       description: Describes a DNS zone.
@@ -3358,7 +3206,7 @@ schemas:
         - $type: ApiVersion
           version: 2015-05-04-preview
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: etag
           schema: *ref_31
           description: The etag of the zone.
@@ -3368,7 +3216,7 @@ schemas:
               name: etag
               description: The etag of the zone.
               uid: 'property:256'
-        - $type: Property
+        - !<!Metadata> 
           $key: properties
           schema: *ref_15
           description: Represents the properties of the zone.
@@ -3382,8 +3230,7 @@ schemas:
         default:
           name: Zone
           description: Describes a DNS zone.
-    - &ref_67
-      $type: ObjectSchema
+    - !<!Metadata> &ref_67
       $key: AzureEntityResource
       type: object
       description: The resource model definition for a Azure Resource Manager resource with an etag.
@@ -3391,10 +3238,9 @@ schemas:
         - $type: ApiVersion
           version: '1.0'
       properties:
-        - $type: Property
+        - !<!Metadata> 
           $key: etag
-          schema:
-            $type: StringSchema
+          schema: !<!Metadata> 
             $key: AzureEntityResource-etag
             type: string
             description: Resource Etag.
@@ -3432,7 +3278,7 @@ schemas:
     - *ref_59
     - *ref_60
     - *ref_61
-    - $type: AndSchema
+    - !<!Metadata> 
       $key: Zone
       type: and
       description: Describes a DNS zone.
@@ -3443,7 +3289,7 @@ schemas:
         default:
           name: Zone
           description: Describes a DNS zone.
-    - $type: AndSchema
+    - !<!Metadata> 
       $key: Zone
       type: and
       description: Describes a DNS zone.
@@ -3455,7 +3301,7 @@ schemas:
           name: Zone
           description: Describes a DNS zone.
     - *ref_64
-    - $type: AndSchema
+    - !<!Metadata> 
       $key: RecordSet
       type: and
       description: Describes a DNS RecordSet (a set of DNS records with the same name and type).
@@ -3466,7 +3312,7 @@ schemas:
         default:
           name: RecordSet
           description: Describes a DNS RecordSet (a set of DNS records with the same name and type).
-    - $type: AndSchema
+    - !<!Metadata> 
       $key: Zone
       type: and
       description: Describes a DNS zone.
@@ -3477,7 +3323,7 @@ schemas:
         default:
           name: Zone
           description: Describes a DNS zone.
-    - $type: AndSchema
+    - !<!Metadata> 
       $key: AzureEntityResource
       type: and
       description: The resource model definition for a Azure Resource Manager resource with an etag.
@@ -3488,7 +3334,7 @@ schemas:
         default:
           name: AzureEntityResource
           description: The resource model definition for a Azure Resource Manager resource with an etag.
-    - $type: AndSchema
+    - !<!Metadata> 
       $key: ProxyResource
       type: and
       description: The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
@@ -3499,57 +3345,55 @@ schemas:
           name: ProxyResource
           description: The resource model definition for a ARM proxy resource. It will have everything other than required location and tags
   choices:
-    - &ref_70
-      $type: ChoiceSchema
+    - !<!Metadata> &ref_70
       $key: RecordType
       choices:
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: A
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: AAAA
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: CNAME
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: MX
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: NS
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: PTR
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: SOA
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: SRV
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: TXT
-        - $type: ChoiceValue
-          name: '-each'
+        - name: '-each'
           description: description
+          $type: ChoiceValue
           value: CAA
       type: choice
       description: MISSING-SCHEMA-DESCRIPTION-CHOICE
       apiVersions:
         - $type: ApiVersion
           version: '2016-04-01'
-      choiceType:
-        $type: StringSchema
+      choiceType: !<!Metadata> 
         $key: choice
         type: string
         description: choice
@@ -3569,20 +3413,18 @@ schemas:
     - *ref_38
     - *ref_39
 info:
-  $type: Info
   description: The DNS Management Client.
   title: Dns
 operationGroups:
-  - $type: OperationGroup
-    $key: RecordSets
+
+  - $key: RecordSets
     operations:
-      - $type: Operation
+      - !<!Metadata> 
         $key: Update
         description: Updates a record set within a DNS zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_69
               description: The name of the resource group.
@@ -3591,10 +3433,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:0'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema: &ref_73
-                $type: StringSchema
+              schema: !<!Metadata> &ref_73
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·patch·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3613,10 +3454,9 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:1'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: relativeRecordSetName
-              schema: &ref_74
-                $type: StringSchema
+              schema: !<!Metadata> &ref_74
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·patch·parameters·2·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3635,7 +3475,7 @@ operationGroups:
                   name: relativeRecordSetName
                   description: 'The name of the record set, relative to the name of the zone.'
                   uid: 'parameter:2'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of DNS record in this record set.
@@ -3644,10 +3484,9 @@ operationGroups:
                   name: recordType
                   description: The type of DNS record in this record set.
                   uid: 'parameter:3'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
-              schema: &ref_75
-                $type: StringSchema
+              schema: !<!Metadata> &ref_75
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·patch·parameters·4·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3666,10 +3505,9 @@ operationGroups:
                   name: If-Match
                   description: The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting concurrent changes.
                   uid: 'parameter:4'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
-              schema: &ref_71
-                $type: StringSchema
+              schema: !<!Metadata> &ref_71
                 $key: components·parameters·apiversionparameter·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3686,10 +3524,9 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:5'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
-              schema: &ref_72
-                $type: StringSchema
+              schema: !<!Metadata> &ref_72
                 $key: components·parameters·subscriptionidparameter·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3717,7 +3554,6 @@ operationGroups:
               mediaType: application/json
               servers:
                 - &ref_68
-                  $type: HttpServer
                   url: 'https://management.azure.com/'
                   language:
                     default:
@@ -3728,16 +3564,14 @@ operationGroups:
           default:
             name: Update
             description: Updates a record set within a DNS zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: CreateOrUpdate
         description: Creates or updates a record set within a DNS zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·put·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3754,10 +3588,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:7'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema: &ref_77
-                $type: StringSchema
+              schema: !<!Metadata> &ref_77
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·put·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3776,10 +3609,9 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:8'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: relativeRecordSetName
-              schema: &ref_78
-                $type: StringSchema
+              schema: !<!Metadata> &ref_78
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·put·parameters·2·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3798,7 +3630,7 @@ operationGroups:
                   name: relativeRecordSetName
                   description: 'The name of the record set, relative to the name of the zone.'
                   uid: 'parameter:9'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
@@ -3807,10 +3639,9 @@ operationGroups:
                   name: recordType
                   description: The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
                   uid: 'parameter:10'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
-              schema: &ref_79
-                $type: StringSchema
+              schema: !<!Metadata> &ref_79
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·put·parameters·4·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3829,10 +3660,9 @@ operationGroups:
                   name: If-Match
                   description: The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
                   uid: 'parameter:11'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-None-Match
-              schema: &ref_80
-                $type: StringSchema
+              schema: !<!Metadata> &ref_80
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·put·parameters·5·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3851,7 +3681,7 @@ operationGroups:
                   name: If-None-Match
                   description: 'Set to ''*'' to allow a new record set to be created, but to prevent updating an existing record set. Other values will be ignored.'
                   uid: 'parameter:12'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -3860,7 +3690,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:13'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -3885,16 +3715,14 @@ operationGroups:
           default:
             name: CreateOrUpdate
             description: Creates or updates a record set within a DNS zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: Delete
         description: Deletes a record set from a DNS zone. This operation cannot be undone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·delete·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3911,10 +3739,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:15'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema: &ref_83
-                $type: StringSchema
+              schema: !<!Metadata> &ref_83
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·delete·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3933,10 +3760,9 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:16'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: relativeRecordSetName
-              schema: &ref_84
-                $type: StringSchema
+              schema: !<!Metadata> &ref_84
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·delete·parameters·2·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3955,7 +3781,7 @@ operationGroups:
                   name: relativeRecordSetName
                   description: 'The name of the record set, relative to the name of the zone.'
                   uid: 'parameter:17'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of DNS record in this record set. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
@@ -3964,10 +3790,9 @@ operationGroups:
                   name: recordType
                   description: The type of DNS record in this record set. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
                   uid: 'parameter:18'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
-              schema: &ref_85
-                $type: StringSchema
+              schema: !<!Metadata> &ref_85
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·delete·parameters·4·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -3986,7 +3811,7 @@ operationGroups:
                   name: If-Match
                   description: The etag of the record set. Omit this value to always delete the current record set. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
                   uid: 'parameter:19'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -3995,7 +3820,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:20'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4018,16 +3843,14 @@ operationGroups:
           default:
             name: Delete
             description: Deletes a record set from a DNS zone. This operation cannot be undone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: Get
         description: Gets a record set.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·get·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4044,10 +3867,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:22'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema: &ref_86
-                $type: StringSchema
+              schema: !<!Metadata> &ref_86
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·get·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4066,10 +3888,9 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:23'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: relativeRecordSetName
-              schema: &ref_87
-                $type: StringSchema
+              schema: !<!Metadata> &ref_87
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype-relativerecordsetname·get·parameters·2·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4088,7 +3909,7 @@ operationGroups:
                   name: relativeRecordSetName
                   description: 'The name of the record set, relative to the name of the zone.'
                   uid: 'parameter:24'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of DNS record in this record set.
@@ -4097,7 +3918,7 @@ operationGroups:
                   name: recordType
                   description: The type of DNS record in this record set.
                   uid: 'parameter:25'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -4106,7 +3927,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:26'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4129,16 +3950,14 @@ operationGroups:
           default:
             name: Get
             description: Gets a record set.
-      - $type: Operation
+      - !<!Metadata> 
         $key: ListByType
         description: Lists the record sets of a specified type in a DNS zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype·get·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4155,10 +3974,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:28'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema: &ref_88
-                $type: StringSchema
+              schema: !<!Metadata> &ref_88
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype·get·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4177,7 +3995,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:29'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of record sets to enumerate.
@@ -4186,10 +4004,9 @@ operationGroups:
                   name: recordType
                   description: The type of record sets to enumerate.
                   uid: 'parameter:30'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $top
-              schema: &ref_89
-                $type: NumberSchema
+              schema: !<!Metadata> &ref_89
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype·get·parameters·3·schema
                 type: integer
                 description: MISSING-SCHEMA-DESCRIPTION-INTEGER
@@ -4209,10 +4026,9 @@ operationGroups:
                   name: $top
                   description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
                   uid: 'parameter:31'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $recordsetnamesuffix
-              schema: &ref_90
-                $type: StringSchema
+              schema: !<!Metadata> &ref_90
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordtype·get·parameters·4·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4231,7 +4047,7 @@ operationGroups:
                   name: $recordsetnamesuffix
                   description: 'The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>'
                   uid: 'parameter:32'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -4240,7 +4056,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:33'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4263,16 +4079,14 @@ operationGroups:
           default:
             name: ListByType
             description: Lists the record sets of a specified type in a DNS zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: ListByDnsZone
         description: Lists all record sets in a DNS zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordsets·get·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4289,10 +4103,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:35'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema: &ref_91
-                $type: StringSchema
+              schema: !<!Metadata> &ref_91
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordsets·get·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4311,10 +4124,9 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:36'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $top
-              schema: &ref_92
-                $type: NumberSchema
+              schema: !<!Metadata> &ref_92
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordsets·get·parameters·2·schema
                 type: integer
                 description: MISSING-SCHEMA-DESCRIPTION-INTEGER
@@ -4334,10 +4146,9 @@ operationGroups:
                   name: $top
                   description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
                   uid: 'parameter:37'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $recordsetnamesuffix
-              schema: &ref_93
-                $type: StringSchema
+              schema: !<!Metadata> &ref_93
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-recordsets·get·parameters·3·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4356,7 +4167,7 @@ operationGroups:
                   name: $recordsetnamesuffix
                   description: 'The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>'
                   uid: 'parameter:38'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -4365,7 +4176,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:39'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4388,16 +4199,14 @@ operationGroups:
           default:
             name: ListByDnsZone
             description: Lists all record sets in a DNS zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: ListAllByDnsZone
         description: Lists all record sets in a DNS zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-all·get·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4414,10 +4223,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:41'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-all·get·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4434,10 +4242,9 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:42'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $top
-              schema:
-                $type: NumberSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-all·get·parameters·2·schema
                 type: integer
                 description: MISSING-SCHEMA-DESCRIPTION-INTEGER
@@ -4455,10 +4262,9 @@ operationGroups:
                   name: $top
                   description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
                   uid: 'parameter:43'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $recordsetnamesuffix
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename-all·get·parameters·3·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4475,7 +4281,7 @@ operationGroups:
                   name: $recordsetnamesuffix
                   description: 'The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>'
                   uid: 'parameter:44'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -4484,7 +4290,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:45'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4507,16 +4313,14 @@ operationGroups:
           default:
             name: ListAllByDnsZone
             description: Lists all record sets in a DNS zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: CreateOrUpdate
         description: Creates or updates a DNS zone. Does not modify DNS records within the zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·put·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4533,10 +4337,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:47'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema: &ref_94
-                $type: StringSchema
+              schema: !<!Metadata> &ref_94
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·put·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4555,10 +4358,9 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:48'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
-              schema: &ref_95
-                $type: StringSchema
+              schema: !<!Metadata> &ref_95
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·put·parameters·2·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4577,10 +4379,9 @@ operationGroups:
                   name: If-Match
                   description: The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
                   uid: 'parameter:49'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-None-Match
-              schema: &ref_96
-                $type: StringSchema
+              schema: !<!Metadata> &ref_96
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·put·parameters·3·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4599,7 +4400,7 @@ operationGroups:
                   name: If-None-Match
                   description: 'Set to ''*'' to allow a new DNS zone to be created, but to prevent updating an existing zone. Other values will be ignored.'
                   uid: 'parameter:50'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -4608,7 +4409,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:51'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4633,16 +4434,14 @@ operationGroups:
           default:
             name: CreateOrUpdate
             description: Creates or updates a DNS zone. Does not modify DNS records within the zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: Delete
         description: 'Deletes a DNS zone. WARNING: All DNS records in the zone will also be deleted. This operation cannot be undone.'
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·delete·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4659,10 +4458,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:53'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema: &ref_97
-                $type: StringSchema
+              schema: !<!Metadata> &ref_97
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·delete·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4681,10 +4479,9 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:54'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
-              schema: &ref_98
-                $type: StringSchema
+              schema: !<!Metadata> &ref_98
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·delete·parameters·2·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4703,7 +4500,7 @@ operationGroups:
                   name: If-Match
                   description: The etag of the DNS zone. Omit this value to always delete the current zone. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
                   uid: 'parameter:55'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -4712,7 +4509,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:56'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4735,16 +4532,14 @@ operationGroups:
           default:
             name: Delete
             description: 'Deletes a DNS zone. WARNING: All DNS records in the zone will also be deleted. This operation cannot be undone.'
-      - $type: Operation
+      - !<!Metadata> 
         $key: Get
         description: 'Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.'
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·get·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4761,10 +4556,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:58'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema: &ref_99
-                $type: StringSchema
+              schema: !<!Metadata> &ref_99
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·get·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4783,7 +4577,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:59'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -4792,7 +4586,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:60'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4815,16 +4609,14 @@ operationGroups:
           default:
             name: Get
             description: 'Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.'
-      - $type: Operation
+      - !<!Metadata> 
         $key: Update
         description: Updates a DNS zone. Does not modify DNS records within the zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·patch·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4841,10 +4633,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:62'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·patch·parameters·1·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4861,10 +4652,9 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:63'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones-zonename·patch·parameters·2·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4881,7 +4671,7 @@ operationGroups:
                   name: If-Match
                   description: The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
                   uid: 'parameter:64'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -4890,7 +4680,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:65'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4915,16 +4705,14 @@ operationGroups:
           default:
             name: Update
             description: Updates a DNS zone. Does not modify DNS records within the zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: ListByResourceGroup
         description: Lists the DNS zones within a resource group.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema:
-                $type: StringSchema
+              schema: !<!Metadata> 
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones·get·parameters·0·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -4941,10 +4729,9 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group.
                   uid: 'parameter:67'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $top
-              schema: &ref_100
-                $type: NumberSchema
+              schema: !<!Metadata> &ref_100
                 $key: paths·subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsoft-network-dnszones·get·parameters·1·schema
                 type: integer
                 description: MISSING-SCHEMA-DESCRIPTION-INTEGER
@@ -4964,7 +4751,7 @@ operationGroups:
                   name: $top
                   description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
                   uid: 'parameter:68'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -4973,7 +4760,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:69'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -4996,13 +4783,12 @@ operationGroups:
           default:
             name: ListByResourceGroup
             description: Lists the DNS zones within a resource group.
-      - $type: Operation
+      - !<!Metadata> 
         $key: GetByTargetResources
         description: Returns the DNS records specified by the referencing targetResourceIds.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -5011,7 +4797,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:71'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -5036,16 +4822,14 @@ operationGroups:
           default:
             name: GetByTargetResources
             description: Returns the DNS records specified by the referencing targetResourceIds.
-      - $type: Operation
+      - !<!Metadata> 
         $key: List
         description: Lists the DNS zones in all resource groups in a subscription.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $top
-              schema: &ref_101
-                $type: NumberSchema
+              schema: !<!Metadata> &ref_101
                 $key: paths·subscriptions-subscriptionid-providers-microsoft-network-dnszones·get·parameters·0·schema
                 type: integer
                 description: MISSING-SCHEMA-DESCRIPTION-INTEGER
@@ -5065,7 +4849,7 @@ operationGroups:
                   name: $top
                   description: 'The maximum number of DNS zones to return. If not specified, returns up to 100 zones.'
                   uid: 'parameter:73'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_71
               description: Specifies the API version.
@@ -5074,7 +4858,7 @@ operationGroups:
                   name: api-version
                   description: Specifies the API version.
                   uid: 'parameter:74'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_72
               description: 'Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription.'
@@ -5097,16 +4881,14 @@ operationGroups:
           default:
             name: List
             description: Lists the DNS zones in all resource groups in a subscription.
-      - $type: Operation
+      - !<!Metadata> 
         $key: Update
         description: Updates a record set within a DNS zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
-              schema: &ref_76
-                $type: StringSchema
+              schema: !<!Metadata> &ref_76
                 $key: components·parameters·resourcegroupnameparameter·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -5126,7 +4908,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:76'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
               schema: *ref_73
               description: The name of the DNS zone (without a terminating dot).
@@ -5135,7 +4917,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:77'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: relativeRecordSetName
               schema: *ref_74
               description: 'The name of the record set, relative to the name of the zone.'
@@ -5144,7 +4926,7 @@ operationGroups:
                   name: relativeRecordSetName
                   description: 'The name of the record set, relative to the name of the zone.'
                   uid: 'parameter:78'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of DNS record in this record set.
@@ -5153,7 +4935,7 @@ operationGroups:
                   name: recordType
                   description: The type of DNS record in this record set.
                   uid: 'parameter:79'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
               schema: *ref_75
               description: The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting concurrent changes.
@@ -5162,10 +4944,9 @@ operationGroups:
                   name: If-Match
                   description: The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting concurrent changes.
                   uid: 'parameter:80'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
-              schema: &ref_81
-                $type: StringSchema
+              schema: !<!Metadata> &ref_81
                 $key: components·parameters·apiversionparameter·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -5183,10 +4964,9 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:81'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
-              schema: &ref_82
-                $type: StringSchema
+              schema: !<!Metadata> &ref_82
                 $key: components·parameters·subscriptionidparameter·schema
                 type: string
                 description: MISSING-SCHEMA-DESCRIPTION-STRING
@@ -5220,13 +5000,12 @@ operationGroups:
           default:
             name: Update
             description: Updates a record set within a DNS zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: CreateOrUpdate
         description: Creates or updates a record set within a DNS zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_76
               description: The name of the resource group. The name is case insensitive.
@@ -5235,7 +5014,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:83'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
               schema: *ref_77
               description: The name of the DNS zone (without a terminating dot).
@@ -5244,7 +5023,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:84'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: relativeRecordSetName
               schema: *ref_78
               description: 'The name of the record set, relative to the name of the zone.'
@@ -5253,7 +5032,7 @@ operationGroups:
                   name: relativeRecordSetName
                   description: 'The name of the record set, relative to the name of the zone.'
                   uid: 'parameter:85'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
@@ -5262,7 +5041,7 @@ operationGroups:
                   name: recordType
                   description: The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the DNS zone is created).
                   uid: 'parameter:86'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
               schema: *ref_79
               description: The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
@@ -5271,7 +5050,7 @@ operationGroups:
                   name: If-Match
                   description: The etag of the record set. Omit this value to always overwrite the current record set. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
                   uid: 'parameter:87'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-None-Match
               schema: *ref_80
               description: 'Set to ''*'' to allow a new record set to be created, but to prevent updating an existing record set. Other values will be ignored.'
@@ -5280,7 +5059,7 @@ operationGroups:
                   name: If-None-Match
                   description: 'Set to ''*'' to allow a new record set to be created, but to prevent updating an existing record set. Other values will be ignored.'
                   uid: 'parameter:88'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5289,7 +5068,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:89'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.
@@ -5314,13 +5093,12 @@ operationGroups:
           default:
             name: CreateOrUpdate
             description: Creates or updates a record set within a DNS zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: Delete
         description: Deletes a record set from a DNS zone. This operation cannot be undone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_76
               description: The name of the resource group. The name is case insensitive.
@@ -5329,7 +5107,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:91'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
               schema: *ref_83
               description: The name of the DNS zone (without a terminating dot).
@@ -5338,7 +5116,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:92'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: relativeRecordSetName
               schema: *ref_84
               description: 'The name of the record set, relative to the name of the zone.'
@@ -5347,7 +5125,7 @@ operationGroups:
                   name: relativeRecordSetName
                   description: 'The name of the record set, relative to the name of the zone.'
                   uid: 'parameter:93'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of DNS record in this record set. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
@@ -5356,7 +5134,7 @@ operationGroups:
                   name: recordType
                   description: The type of DNS record in this record set. Record sets of type SOA cannot be deleted (they are deleted when the DNS zone is deleted).
                   uid: 'parameter:94'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
               schema: *ref_85
               description: The etag of the record set. Omit this value to always delete the current record set. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
@@ -5365,7 +5143,7 @@ operationGroups:
                   name: If-Match
                   description: The etag of the record set. Omit this value to always delete the current record set. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
                   uid: 'parameter:95'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5374,7 +5152,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:96'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.
@@ -5397,13 +5175,12 @@ operationGroups:
           default:
             name: Delete
             description: Deletes a record set from a DNS zone. This operation cannot be undone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: Get
         description: Gets a record set.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_76
               description: The name of the resource group. The name is case insensitive.
@@ -5412,7 +5189,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:98'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
               schema: *ref_86
               description: The name of the DNS zone (without a terminating dot).
@@ -5421,7 +5198,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:99'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: relativeRecordSetName
               schema: *ref_87
               description: 'The name of the record set, relative to the name of the zone.'
@@ -5430,7 +5207,7 @@ operationGroups:
                   name: relativeRecordSetName
                   description: 'The name of the record set, relative to the name of the zone.'
                   uid: 'parameter:100'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of DNS record in this record set.
@@ -5439,7 +5216,7 @@ operationGroups:
                   name: recordType
                   description: The type of DNS record in this record set.
                   uid: 'parameter:101'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5448,7 +5225,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:102'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.
@@ -5471,13 +5248,12 @@ operationGroups:
           default:
             name: Get
             description: Gets a record set.
-      - $type: Operation
+      - !<!Metadata> 
         $key: ListByType
         description: Lists the record sets of a specified type in a DNS zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_76
               description: The name of the resource group. The name is case insensitive.
@@ -5486,7 +5262,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:104'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
               schema: *ref_88
               description: The name of the DNS zone (without a terminating dot).
@@ -5495,7 +5271,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:105'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: recordType
               schema: *ref_70
               description: The type of record sets to enumerate.
@@ -5504,7 +5280,7 @@ operationGroups:
                   name: recordType
                   description: The type of record sets to enumerate.
                   uid: 'parameter:106'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $top
               schema: *ref_89
               description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
@@ -5513,7 +5289,7 @@ operationGroups:
                   name: $top
                   description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
                   uid: 'parameter:107'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $recordsetnamesuffix
               schema: *ref_90
               description: 'The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>'
@@ -5522,7 +5298,7 @@ operationGroups:
                   name: $recordsetnamesuffix
                   description: 'The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>'
                   uid: 'parameter:108'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5531,7 +5307,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:109'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.
@@ -5554,13 +5330,12 @@ operationGroups:
           default:
             name: ListByType
             description: Lists the record sets of a specified type in a DNS zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: ListByDnsZone
         description: Lists all record sets in a DNS zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_76
               description: The name of the resource group. The name is case insensitive.
@@ -5569,7 +5344,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:111'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
               schema: *ref_91
               description: The name of the DNS zone (without a terminating dot).
@@ -5578,7 +5353,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:112'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $top
               schema: *ref_92
               description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
@@ -5587,7 +5362,7 @@ operationGroups:
                   name: $top
                   description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
                   uid: 'parameter:113'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $recordsetnamesuffix
               schema: *ref_93
               description: 'The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>'
@@ -5596,7 +5371,7 @@ operationGroups:
                   name: $recordsetnamesuffix
                   description: 'The suffix label of the record set name that has to be used to filter the record set enumerations. If this parameter is specified, Enumeration will return only records that end with .<recordSetNameSuffix>'
                   uid: 'parameter:114'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5605,7 +5380,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:115'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.
@@ -5628,13 +5403,12 @@ operationGroups:
           default:
             name: ListByDnsZone
             description: Lists all record sets in a DNS zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: CreateOrUpdate
         description: Creates or updates a DNS zone. Does not modify DNS records within the zone.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_76
               description: The name of the resource group. The name is case insensitive.
@@ -5643,7 +5417,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:117'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
               schema: *ref_94
               description: The name of the DNS zone (without a terminating dot).
@@ -5652,7 +5426,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:118'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
               schema: *ref_95
               description: The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
@@ -5661,7 +5435,7 @@ operationGroups:
                   name: If-Match
                   description: The etag of the DNS zone. Omit this value to always overwrite the current zone. Specify the last-seen etag value to prevent accidentally overwriting any concurrent changes.
                   uid: 'parameter:119'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-None-Match
               schema: *ref_96
               description: 'Set to ''*'' to allow a new DNS zone to be created, but to prevent updating an existing zone. Other values will be ignored.'
@@ -5670,7 +5444,7 @@ operationGroups:
                   name: If-None-Match
                   description: 'Set to ''*'' to allow a new DNS zone to be created, but to prevent updating an existing zone. Other values will be ignored.'
                   uid: 'parameter:120'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5679,7 +5453,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:121'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.
@@ -5704,13 +5478,12 @@ operationGroups:
           default:
             name: CreateOrUpdate
             description: Creates or updates a DNS zone. Does not modify DNS records within the zone.
-      - $type: Operation
+      - !<!Metadata> 
         $key: Delete
         description: 'Deletes a DNS zone. WARNING: All DNS records in the zone will also be deleted. This operation cannot be undone.'
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_76
               description: The name of the resource group. The name is case insensitive.
@@ -5719,7 +5492,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:123'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
               schema: *ref_97
               description: The name of the DNS zone (without a terminating dot).
@@ -5728,7 +5501,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:124'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: If-Match
               schema: *ref_98
               description: The etag of the DNS zone. Omit this value to always delete the current zone. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
@@ -5737,7 +5510,7 @@ operationGroups:
                   name: If-Match
                   description: The etag of the DNS zone. Omit this value to always delete the current zone. Specify the last-seen etag value to prevent accidentally deleting any concurrent changes.
                   uid: 'parameter:125'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5746,7 +5519,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:126'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.
@@ -5769,13 +5542,12 @@ operationGroups:
           default:
             name: Delete
             description: 'Deletes a DNS zone. WARNING: All DNS records in the zone will also be deleted. This operation cannot be undone.'
-      - $type: Operation
+      - !<!Metadata> 
         $key: Get
         description: 'Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.'
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_76
               description: The name of the resource group. The name is case insensitive.
@@ -5784,7 +5556,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:128'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: zoneName
               schema: *ref_99
               description: The name of the DNS zone (without a terminating dot).
@@ -5793,7 +5565,7 @@ operationGroups:
                   name: zoneName
                   description: The name of the DNS zone (without a terminating dot).
                   uid: 'parameter:129'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5802,7 +5574,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:130'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.
@@ -5825,13 +5597,12 @@ operationGroups:
           default:
             name: Get
             description: 'Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.'
-      - $type: Operation
+      - !<!Metadata> 
         $key: ListByResourceGroup
         description: Lists the DNS zones within a resource group.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: resourceGroupName
               schema: *ref_76
               description: The name of the resource group. The name is case insensitive.
@@ -5840,7 +5611,7 @@ operationGroups:
                   name: resourceGroupName
                   description: The name of the resource group. The name is case insensitive.
                   uid: 'parameter:132'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $top
               schema: *ref_100
               description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
@@ -5849,7 +5620,7 @@ operationGroups:
                   name: $top
                   description: 'The maximum number of record sets to return. If not specified, returns up to 100 record sets.'
                   uid: 'parameter:133'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5858,7 +5629,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:134'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.
@@ -5881,13 +5652,12 @@ operationGroups:
           default:
             name: ListByResourceGroup
             description: Lists the DNS zones within a resource group.
-      - $type: Operation
+      - !<!Metadata> 
         $key: List
         description: Lists the DNS zones in all resource groups in a subscription.
-        request:
-          $type: Request
+        request: !<!Metadata> 
           parameters:
-            - $type: Parameter
+            - !<!Metadata> 
               $key: $top
               schema: *ref_101
               description: 'The maximum number of DNS zones to return. If not specified, returns up to 100 zones.'
@@ -5896,7 +5666,7 @@ operationGroups:
                   name: $top
                   description: 'The maximum number of DNS zones to return. If not specified, returns up to 100 zones.'
                   uid: 'parameter:136'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: api-version
               schema: *ref_81
               description: The API version to use for this operation.
@@ -5905,7 +5675,7 @@ operationGroups:
                   name: api-version
                   description: The API version to use for this operation.
                   uid: 'parameter:137'
-            - $type: Parameter
+            - !<!Metadata> 
               $key: subscriptionId
               schema: *ref_82
               description: The ID of the target subscription.

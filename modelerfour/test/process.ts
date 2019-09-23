@@ -12,6 +12,7 @@ import { startSession } from '@azure-tools/autorest-extension-base';
 import { values } from '@azure-tools/linq';
 import { CodeModel } from '@azure-tools/codemodel';
 import { Model } from '@azure-tools/openapi';
+import { codeModelSchema } from '@azure-tools/codemodel';
 
 require('source-map-support').install();
 
@@ -77,7 +78,7 @@ async function createTestSession<TInputModel>(config: any, inputs: Array<string>
     const codeModel = await modeler.process();
 
     // console.log(serialize(codeModel))
-    await (writeFile(`${__dirname}/../../output.yaml`, serialize(codeModel)));
+    await (writeFile(`${__dirname}/../../output.yaml`, serialize(codeModel, codeModelSchema)));
   }
 
 }
