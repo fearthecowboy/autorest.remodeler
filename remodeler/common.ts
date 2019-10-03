@@ -31,6 +31,9 @@ export function typeOf(obj: any) {
 
 /** identifies if a given refable is a reference or an instance */
 export function isReference<T>(item: Refable<T>): item is PathReference<T> {
+  if (!item) {
+    return false;
+  }
   return (<PathReference<T>>item).$ref ? true : false;
 }
 

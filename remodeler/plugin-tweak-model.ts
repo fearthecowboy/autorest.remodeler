@@ -70,6 +70,7 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
   state.setValue('service-name', serviceName);
 
   const model = state.model;
+  model.schemas = model.schemas || [];
 
   const set = new Set<Schema>();
   const removes = new Set<string>();
@@ -140,7 +141,8 @@ async function tweakModel(state: State): Promise<codemodel.Model> {
       for (const response of responses) {
         if (response.schema) {
           if (response.schema.type === JsonType.String && response.schema.format === StringFormat.Binary) {
-            response.mimeTypes = [KnownMediaType.Stream];
+            // WHY WAS THIS HERE?!
+            // response.mimeTypes = [KnownMediaType.Stream];
           }
         }
       }
