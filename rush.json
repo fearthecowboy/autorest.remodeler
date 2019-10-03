@@ -99,12 +99,6 @@
       "projectFolder": "remodeler",
       "reviewCategory": "production",
       "shouldPublish": true
-    },
-    {
-      "packageName": "@autorest/modelerfour",
-      "projectFolder": "modelerfour",
-      "reviewCategory": "production",
-      "shouldPublish": true
     }
   ]
 }
