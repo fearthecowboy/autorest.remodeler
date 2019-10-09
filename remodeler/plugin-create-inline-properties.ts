@@ -9,8 +9,8 @@ import { getPascalIdentifier, removeSequentialDuplicates, pascalCase, fixLeading
 import { length, values, } from '@azure-tools/linq';
 import { Host } from '@azure-tools/autorest-extension-base';
 import { CommandOperation } from '@azure-tools/codemodel-v3/dist/code-model/command-operation';
-type State = ModelState<codemodel.Model>;
 
+type State = ModelState<codemodel.Model>;
 
 function getPluralizationService(): EnglishPluralizationService {
   const result = new EnglishPluralizationService();
@@ -37,6 +37,60 @@ function getNameOptions(typeName: string, components: Array<string>) {
   return [...result.values()];
 }
 
+function passTwo(schema: Schema) {
+
+  if (!schema.details.default.passTwo) {
+    schema.details.default.passTwo = true;
+
+    const virtualProperties = schema.details.default.virtualProperties || {
+      owned: [],
+      inherited: [],
+      inlined: [],
+    };
+
+    // First we should run thru the properties in parent classes and create inliners for each property they have.
+    for (const parentSchema of values(schema.allOf)) {
+      // make sure that the parent is done.
+      passTwo(parentSchema);
+
+      const parentProperties = parentSchema.details.default.virtualProperties || {
+        owned: [],
+        inherited: [],
+        inlined: [],
+      };
+
+      // now we go thru the parent's virutal properties and create our own copies 
+      for (const virtualProperty of [...parentProperties.inherited, ...parentProperties.inlined, ...parentProperties.owned]) {
+        // make sure that we have a list of shared owners of this property.
+        virtualProperty.sharedWith = virtualProperty.sharedWith || [virtualProperty];
+
+        // we are just copying over theirs to ours.
+        const inheritedProperty = {
+          name: virtualProperty.name,
+          property: virtualProperty.property,
+          private: virtualProperty.private,
+          nameComponents: virtualProperty.nameComponents,
+          nameOptions: virtualProperty.nameOptions,
+          accessViaProperty: virtualProperty,
+          accessViaMember: virtualProperty,
+          accessViaSchema: parentSchema,
+          originalContainingSchema: virtualProperty.originalContainingSchema,
+          description: virtualProperty.description,
+          alias: [],
+          required: virtualProperty.required || !!values(schema.required).first(each => !!each && !!each.toLowerCase && each.toLowerCase() === virtualProperty.property.details.default.name.toLowerCase()),
+          sharedWith: virtualProperty.sharedWith,
+        };
+        // add it to the list of virtual properties that share this property.
+        virtualProperty.sharedWith.push(inheritedProperty);
+
+        // add it to this class.
+        virtualProperties.inherited.push(inheritedProperty);
+      }
+    }
+  }
+
+
+}
 
 function createVirtualProperties(schema: Schema, stack = new Array<string>(), threshold = 30) {
   // did we already inline this objecct
@@ -66,45 +120,6 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
     inlined: new Array<VirtualProperty>(),
   };
 
-  // First we should run thru the properties in parent classes and create inliners for each property they have.
-  for (const parentSchema of values(schema.allOf)) {
-    // make sure that the parent is done.
-    createVirtualProperties(parentSchema, [...stack, `${schema.details.default.name}`], threshold);
-
-    const parentProperties = parentSchema.details.default.virtualProperties || {
-      owned: [],
-      inherited: [],
-      inlined: [],
-    };
-
-    // now we go thru the parent's virutal properties and create our own copies 
-    for (const virtualProperty of [...parentProperties.inherited, ...parentProperties.inlined, ...parentProperties.owned]) {
-      // make sure that we have a list of shared owners of this property.
-      virtualProperty.sharedWith = virtualProperty.sharedWith || [virtualProperty];
-
-      // we are just copying over theirs to ours.
-      const inheritedProperty = {
-        name: virtualProperty.name,
-        property: virtualProperty.property,
-        private: virtualProperty.private,
-        nameComponents: virtualProperty.nameComponents,
-        nameOptions: virtualProperty.nameOptions,
-        accessViaProperty: virtualProperty,
-        accessViaMember: virtualProperty,
-        accessViaSchema: parentSchema,
-        originalContainingSchema: virtualProperty.originalContainingSchema,
-        description: virtualProperty.description,
-        alias: [],
-        required: virtualProperty.required || !!values(schema.required).first(each => !!each && !!each.toLowerCase && each.toLowerCase() === virtualProperty.property.details.default.name.toLowerCase()),
-        sharedWith: virtualProperty.sharedWith,
-      };
-      // add it to the list of virtual properties that share this property.
-      virtualProperty.sharedWith.push(inheritedProperty);
-
-      // add it to this class.
-      virtualProperties.inherited.push(inheritedProperty);
-    }
-  }
 
   const [objectProperties, nonObjectProperties] = values(schema.properties).bifurcate(each =>
     each.schema.type === JsonType.Object &&       // is it an object 
@@ -233,6 +248,18 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
     });
   }
 
+
+  schema.details.default.inline = 'yes';
+  return true;
+}
+
+function resolveCollisions(schema: Schema) {
+  const virtualProperties = schema.details.default.virtualProperties || {
+    owned: [],
+    inherited: [],
+    inlined: [],
+  };
+
   // resolve name collisions.
   const allProps = [...virtualProperties.owned, ...virtualProperties.inherited, ...virtualProperties.inlined];
   const inlined = new Map<string, number>();
@@ -250,8 +277,6 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
       each.name = selectName(each.nameOptions, usedNames);
     }
   }
-  schema.details.default.inline = 'yes';
-  return true;
 }
 
 function createVirtualParameters(operation: CommandOperation) {
@@ -324,17 +349,25 @@ async function createVirtuals(state: State): Promise<codemodel.Model> {
 
   const threshold = await state.getValue('inlining-threshold', 24);
 
-  for (const schema of values(state.model.schemas)) {
-    if (schema.type === JsonType.Object) {
+  const objSchemas = values(state.model.schemas).where(each => each.type === JsonType.Object).toArray();
 
-      // did we already inline this objecct
-      if (schema.details.default.inlined) {
-        continue;
-      }
-      // we have an object, let's process it.
-      createVirtualProperties(schema, undefined, threshold);
+  for (const schema of objSchemas) {
+    // did we already inline this objecct
+    if (schema.details.default.inlined) {
+      continue;
     }
+    // we have an object, let's process it.
+    createVirtualProperties(schema, undefined, threshold);
   }
+
+  for (const schema of objSchemas) {
+    passTwo(schema);
+  }
+
+  for (const schema of objSchemas) {
+    resolveCollisions(schema);
+  }
+
 
   for (const operation of values(state.model.commands.operations)) {
     createVirtualParameters(operation);
