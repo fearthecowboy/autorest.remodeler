@@ -349,6 +349,7 @@ export class Remodeler {
 
   private refOrAdd<TSource, TDestination>(nameIfInline: string, ref: Dereferenced<TSource>, dictionary: Dictionary<TDestination>, copyFunc: (name: string, source: TSource, destinationDictionary: Dictionary<TDestination>) => TDestination): TDestination {
     if (!ref.name) {
+      nameIfInline = (<any>ref).title || (<any>ref)['x-ms-client-name'] || nameIfInline;
       // inline definition - extract it out
       return this.add(nameIfInline, ref, dictionary, copyFunc);
     }
