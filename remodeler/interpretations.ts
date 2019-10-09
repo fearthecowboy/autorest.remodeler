@@ -53,9 +53,12 @@ const specialCharacterMapping: { [character: string]: string } = {
 };
 
 export function getValidEnumValueName(originalString: string): string {
-  return !originalString.match(/[A-Za-z0-9]/g) ?
-    getPascalIdentifier(originalString.split('').map(x => specialCharacterMapping[x]).join(' '))
-    : originalString;
+  if (typeof originalString === 'string') {
+    return !originalString.match(/[A-Za-z0-9]/g) ?
+      getPascalIdentifier(originalString.split('').map(x => specialCharacterMapping[x]).join(' '))
+      : originalString;
+  }
+  return originalString;
 }
 
 export function getName(defaultValue: string, original: OpenAPI.Extensions) {
