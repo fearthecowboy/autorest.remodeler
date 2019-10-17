@@ -9,8 +9,8 @@ import { getPascalIdentifier, removeSequentialDuplicates, pascalCase, fixLeading
 import { length, values, } from '@azure-tools/linq';
 import { Host } from '@azure-tools/autorest-extension-base';
 import { CommandOperation } from '@azure-tools/codemodel-v3/dist/code-model/command-operation';
-
 type State = ModelState<codemodel.Model>;
+
 
 function getPluralizationService(): EnglishPluralizationService {
   const result = new EnglishPluralizationService();
@@ -37,63 +37,10 @@ function getNameOptions(typeName: string, components: Array<string>) {
   return [...result.values()];
 }
 
-function passTwo(schema: Schema) {
 
-  if (!schema.details.default.passTwo) {
-    schema.details.default.passTwo = true;
+function createVirtualProperties(schema: Schema, stack: Array<string>, threshold: number, conflicts: Array<string>) {
 
-    const virtualProperties = schema.details.default.virtualProperties || {
-      owned: [],
-      inherited: [],
-      inlined: [],
-    };
-
-    // First we should run thru the properties in parent classes and create inliners for each property they have.
-    for (const parentSchema of values(schema.allOf)) {
-      // make sure that the parent is done.
-      passTwo(parentSchema);
-
-      const parentProperties = parentSchema.details.default.virtualProperties || {
-        owned: [],
-        inherited: [],
-        inlined: [],
-      };
-
-      // now we go thru the parent's virutal properties and create our own copies 
-      for (const virtualProperty of [...parentProperties.inherited, ...parentProperties.inlined, ...parentProperties.owned]) {
-        // make sure that we have a list of shared owners of this property.
-        virtualProperty.sharedWith = virtualProperty.sharedWith || [virtualProperty];
-
-        // we are just copying over theirs to ours.
-        const inheritedProperty = {
-          name: virtualProperty.name,
-          property: virtualProperty.property,
-          private: virtualProperty.private,
-          nameComponents: virtualProperty.nameComponents,
-          nameOptions: virtualProperty.nameOptions,
-          accessViaProperty: virtualProperty,
-          accessViaMember: virtualProperty,
-          accessViaSchema: parentSchema,
-          originalContainingSchema: virtualProperty.originalContainingSchema,
-          description: virtualProperty.description,
-          alias: [],
-          required: virtualProperty.required || !!values(schema.required).first(each => !!each && !!each.toLowerCase && each.toLowerCase() === virtualProperty.property.details.default.name.toLowerCase()),
-          sharedWith: virtualProperty.sharedWith,
-        };
-        // add it to the list of virtual properties that share this property.
-        virtualProperty.sharedWith.push(inheritedProperty);
-
-        // add it to this class.
-        virtualProperties.inherited.push(inheritedProperty);
-      }
-    }
-  }
-
-
-}
-
-function createVirtualProperties(schema: Schema, stack = new Array<string>(), threshold = 30) {
-  // did we already inline this objecct
+  // did we already inline this object
   if (schema.details.default.inline === 'yes') {
     return true;
   }
@@ -104,7 +51,23 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
 
   // this is bad. This would happen when we have a circular reference in the tree.
   if (schema.details.default.inline === 'inprogress') {
-    console.error(`Note: model ${schema.details.default.name} has a circular reference, and we're skipping inlining.\n  ${stack.join(' => ')}`);
+    let text = (`Note: during processing of '${schema.details.default.name}' a circular reference has been discovered.`);
+    text += '\n  In order to proceed, you must add a directive to indicate which model you want to not inline.\n';
+    text += '\ndirective:';
+    text += '\n-no-inline:  \'# choose ONE of these models to disable inlining\'';
+    for (const each of stack) {
+      text += (`\n  - ${each} `);
+    }
+    text += '\n';
+    conflicts.push(text);
+    /*     `directive:
+         - no-inline: 
+           - MyModel
+           - YourModel
+           - HerModel
+        ` */
+
+    // `, and we're skipping inlining.\n  ${stack.join(' => ')}`);
     // mark it as 'not-inlining'
     schema.details.default.inline = 'no';
     return false;
@@ -120,8 +83,49 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
     inlined: new Array<VirtualProperty>(),
   };
 
+  // First we should run thru the properties in parent classes and create inliners for each property they have.
+  for (const parentSchema of values(schema.allOf)) {
+    // make sure that the parent is done.
+    createVirtualProperties(parentSchema, [...stack, `${schema.details.default.name}`], threshold, conflicts);
+
+    const parentProperties = parentSchema.details.default.virtualProperties || {
+      owned: [],
+      inherited: [],
+      inlined: [],
+    };
+
+    // now we go thru the parent's virutal properties and create our own copies 
+    for (const virtualProperty of [...parentProperties.inherited, ...parentProperties.inlined, ...parentProperties.owned]) {
+      // make sure that we have a list of shared owners of this property.
+      virtualProperty.sharedWith = virtualProperty.sharedWith || [virtualProperty];
+
+      // we are just copying over theirs to ours.
+      const inheritedProperty = {
+        name: virtualProperty.name,
+        property: virtualProperty.property,
+        private: virtualProperty.private,
+        nameComponents: virtualProperty.nameComponents,
+        nameOptions: virtualProperty.nameOptions,
+        accessViaProperty: virtualProperty,
+        accessViaMember: virtualProperty,
+        accessViaSchema: parentSchema,
+        originalContainingSchema: virtualProperty.originalContainingSchema,
+        description: virtualProperty.description,
+        alias: [],
+        required: virtualProperty.required || !!values(schema.required).first(each => !!each && !!each.toLowerCase && each.toLowerCase() === virtualProperty.property.details.default.name.toLowerCase()),
+        sharedWith: virtualProperty.sharedWith,
+      };
+      // add it to the list of virtual properties that share this property.
+      virtualProperty.sharedWith.push(inheritedProperty);
+
+      // add it to this class.
+      virtualProperties.inherited.push(inheritedProperty);
+    }
+  }
 
   const [objectProperties, nonObjectProperties] = values(schema.properties).bifurcate(each =>
+    !schema.details.default['skip-inline'] && // if this schema is marked skip-inline, none can be inlined, treat them all as straight properties.
+    !each.schema.details.default['skip-inline'] && // if the property schema is marked skip-inline, then it should not be processed either.
     each.schema.type === JsonType.Object &&       // is it an object 
     getAllProperties(each.schema).length > 0    // does it have properties (or inherit properties)
   );
@@ -131,12 +135,12 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
     const propertyName = property.details.default.name;
 
     // for each object member, make sure that it's inlined it's children that it can.
-    createVirtualProperties(property.schema, [...stack, `${schema.details.default.name}::${propertyName}`], threshold);
+    createVirtualProperties(property.schema, [...stack, `${schema.details.default.name}`], threshold, conflicts);
 
     // this happens if there is a circular reference.
     // this means that this class should not attempt any inlining of that property at all .
     const canInline =
-      (!property.schema.details.default['skip-inline']) &&
+      // (!property.schema.details.default['skip-inline']) &&
       (!property.schema.details.default.byReference) &&
       (!property.schema.additionalProperties) &&
       property.schema.details.default.inline === 'yes';
@@ -248,18 +252,6 @@ function createVirtualProperties(schema: Schema, stack = new Array<string>(), th
     });
   }
 
-
-  schema.details.default.inline = 'yes';
-  return true;
-}
-
-function resolveCollisions(schema: Schema) {
-  const virtualProperties = schema.details.default.virtualProperties || {
-    owned: [],
-    inherited: [],
-    inlined: [],
-  };
-
   // resolve name collisions.
   const allProps = [...virtualProperties.owned, ...virtualProperties.inherited, ...virtualProperties.inlined];
   const inlined = new Map<string, number>();
@@ -277,6 +269,8 @@ function resolveCollisions(schema: Schema) {
       each.name = selectName(each.nameOptions, usedNames);
     }
   }
+  schema.details.default.inline = 'yes';
+  return true;
 }
 
 function createVirtualParameters(operation: CommandOperation) {
@@ -348,26 +342,26 @@ async function createVirtuals(state: State): Promise<codemodel.Model> {
   */
 
   const threshold = await state.getValue('inlining-threshold', 24);
+  const conflicts = new Array<string>();
 
-  const objSchemas = values(state.model.schemas).where(each => each.type === JsonType.Object).toArray();
+  for (const schema of values(state.model.schemas)) {
+    if (schema.type === JsonType.Object) {
+      // did we already inline this objecct
+      if (schema.details.default.inlined) {
+        continue;
+      }
+      // we have an object, let's process it.
 
-  for (const schema of objSchemas) {
-    // did we already inline this objecct
-    if (schema.details.default.inlined) {
-      continue;
+      createVirtualProperties(schema, new Array<string>(), threshold, conflicts);
     }
-    // we have an object, let's process it.
-    createVirtualProperties(schema, undefined, threshold);
   }
-
-  for (const schema of objSchemas) {
-    passTwo(schema);
+  if (length(conflicts) > 0) {
+    state.error('You have one or more circular references in your model, you must add configuration entries to specify which models won\'t be inlined.', ['inline-properties']);
+    for (const each of conflicts) {
+      state.error(each, ['circular reference']);
+    }
+    throw new Error('Circular references exists, must mark models as `no-inline`');
   }
-
-  for (const schema of objSchemas) {
-    resolveCollisions(schema);
-  }
-
 
   for (const operation of values(state.model.commands.operations)) {
     createVirtualParameters(operation);
