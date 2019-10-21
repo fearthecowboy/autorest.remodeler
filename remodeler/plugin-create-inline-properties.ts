@@ -54,7 +54,7 @@ function createVirtualProperties(schema: Schema, stack: Array<string>, threshold
     let text = (`Note: during processing of '${schema.details.default.name}' a circular reference has been discovered.`);
     text += '\n  In order to proceed, you must add a directive to indicate which model you want to not inline.\n';
     text += '\ndirective:';
-    text += '\n-no-inline:  \'# choose ONE of these models to disable inlining\'';
+    text += '\n- no-inline:  # choose ONE of these models to disable inlining';
     for (const each of stack) {
       text += (`\n  - ${each} `);
     }
