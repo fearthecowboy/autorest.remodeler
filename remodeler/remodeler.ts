@@ -450,8 +450,10 @@ export class Remodeler {
         newOperation.parameters.push(new HttpOperationParameter(parameterName, ParameterLocation.Uri, ImplementationLocation.Method, {
           schema: new Schema(`host${parameterName}`, { type: JsonType.String, description: 'Host parameter type' }),
           description: value.description,
+          required: !!(<any>value)['x-required'],
           details: {
             default: {
+              description: value.description,
               serverParameter: value
             }
           }
