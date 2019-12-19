@@ -417,6 +417,9 @@ export class Remodeler {
     // get the server entry
     const servers = Interpretations.getServers(original.operation.servers, original.pathItem.servers, this.oai.servers);
     const server = servers[0];
+    if (!server) {
+      throw new Error(`Operation ${name} : ${original.path} has no servers entry (Are you missing 'host' or 'servers' information in your source file?)`)
+    }
     const baseUrl = `${server.url}`;
 
     const newOperation = new HttpOperation(operationName, baseUrl, original.path, original.method, {
